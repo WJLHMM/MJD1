@@ -1,0 +1,88 @@
+
+{
+	"success":true,
+	"data":{
+		"cartproinfo": {
+			"selfsell":[
+				{
+					"id": 0,
+					"selltype":"self",
+					"imgUrl": "https://img10.360buyimg.com/mobilecms/s168x168_jfs/t20029/62/570986436/272562/1f3b66fe/5afd3d77N426b7b3b.jpg!q70.dpg.webp",
+					"producbrand": "惠普(HP)",
+					"producmodel": "EliteBook 735G5",
+					"produsize": "13.3英寸",
+					"productname": "轻薄笔记本电脑",
+					"producotherinfo":"锐龙5 PRO 2500U 8G 256SSD Win10 100%sRGB一年上门）",
+					"productcolor":"",
+					"manufacutuer":"",
+					"productbrief": "惠普（HP）EliteBook 735G5 13.3英寸轻薄笔记本电脑（锐龙5 PRO 2500U 8G 256SSD Win10 100%sRGB一年上门）",
+					"proselectiontext":"2.185kg/件，【13.3英寸】，【R5 8G 256GSSD 高色域屏】",
+					"payinfo":"白条支付3期免息",
+					"currency":"￥",
+					"uprice":"4999",
+					"sevice":"选择增值服务",
+					"promotioninf":""
+
+				},{
+					"id": 2,
+					"selltype":"self",
+					"imgUrl": "https://img10.360buyimg.com/mobilecms/s168x168_jfs/t10675/253/1344769770/66891/92d54ca4/59df2e7fN86c99a27.jpg!q70.dpg.webp",
+					"producbrand": "苹果(APPLE)",
+					"producmodel": "iPhone X (a1865)",
+					"produsize": "64G",
+					"productname": "轻薄笔记本电脑",
+					"productcolor":"深空灰色",
+					"producotherinfo":"移动联通电信4G手机",
+					"manufacutuer":"",
+					"productbrief": "Apple iPhone X (A1865) 64GB 深空灰色 移动联通电信4G手机",
+					"proselectiontext":"0.435kg/件，深空灰色，公开版",
+					"payinfo":"白条支付3期免息",
+					"currency":"￥",
+					"uprice":"6349",
+					"sevice":"选择增值服务(包含礼品服务)",
+					"promotioninf":""
+				},
+				{
+					"id": 3,
+					"selltype":"self",
+					"imgUrl": "https://img10.360buyimg.com/mobilecms/s168x168_jfs/t1/205/4/14447/185505/5bdab250E4f0ea9d3/2bb3ddfe50771599.jpg!q70.dpg.webp",
+					"producbrand": "福临门",
+					"producmodel": "葵花籽清香食用植物调和油",
+					"produsize": "5L",
+					"productname": "葵花籽油",
+					"productcolor":"",
+					"producotherinfo":" 中粮出品",
+					"manufacutuer":"",
+					"productbrief": "福临门 食用油 葵花籽清香食用植物调和油5L 中粮出品",
+					"proselectiontext":"4.73kg/件，葵花籽原香食用调和油5L",
+					"payinfo":"白条支付3期免息",
+					"currency":"￥",
+					"uprice":"39.9",
+					"sevice":"[礼品购]礼品服务",
+					"promotioninf":"满两件总价9.5折"
+				}
+			],
+			"united":[
+				{
+					"id": 4,
+					"selltype":"united",
+					"imgUrl": "https://img10.360buyimg.com/mobilecms/s168x168_jfs/t17095/164/1091901945/309628/8eec873e/5aba115aN583666cb.jpg!q70.dpg.webp",
+					"producbrand": "清风（APP）",
+					"producmodel": "原木纯品金装系列",
+					"produsize": "3层120抽软抽纸巾*10包",
+					"productname": "抽纸",
+					"productcolor":"",
+					"producotherinfo":"",
+					"manufacutuer":"",
+					"productbrief": "清风（APP）抽纸 原木纯品金装系列 3层120抽软抽纸巾*10包",
+					"proselectiontext":"1.58kg/件，3层120抽纸巾*10包",
+					"payinfo":"白条支付3期免息",
+					"currency":"￥",
+					"uprice":"24.9",
+					"sevice":"",
+					"promotioninf":"每满300减30元"
+				}
+			]
+		}
+	}
+}
