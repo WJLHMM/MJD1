@@ -71,11 +71,11 @@ methods: {
     	// 打开action sheet
 		this.sheetVisible = true;
     },
-	getCamera: function(){
-		console.log("打开照相机")
+	setaddress1: function(){
+		
 	},
-	getLibrary: function(){
-		console.log("打开相册")
+	setaddress2: function(){
+		
 	}
 
 },

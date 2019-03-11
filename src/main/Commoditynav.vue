@@ -1,6 +1,6 @@
 
 <template>
-	<div class="commoditynav">
+	<div class="commoditynav" onmousewheel="return false;">
 		<search></search>
 		<totalmenu :parcatalogyList="catalogyList"></totalmenu>
 		<router-view 
@@ -92,6 +92,7 @@ export default {
 		margin-top: 50px;
 		display: flex;
 		justify-content: space-between;
+		overflow: hidden;
 	}
 	
 </style>
