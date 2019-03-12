@@ -33,6 +33,7 @@ export default {
 			color:null,
 			textcolor:null,
 			isLoginpath:false
+
 		}
 	},
 	methods: {
@@ -53,6 +54,11 @@ export default {
 			this.title = '我的信息',
 			this.color = '#fff',
 			this.textcolor= '#000'
+		}else if(this.$route.fullPath=='/productdetail'){
+			this.title ='', 
+			this.color = '#fff',
+			this.textcolor= '#000',
+			this.isLoginpath = true
 		}
 		
 	}
@@ -66,7 +72,7 @@ export default {
 		width: 100%;
 		max-width: 636px;
 		background-color: #fff;
-		z-index: 1000;
+		z-index: 10;
 	}
 
 

@@ -2,10 +2,21 @@
 <template>
 	<div class="sortbarwrapper">
 		<ul class="sortbar">
-			<li class="sortitem">新品</li>
-			<li class="sortitem">品牌<span class="mui-icon mui-icon-arrowdown"></span></li>
-			<li class="sortitem">分辨率<span class="mui-icon mui-icon-arrowdown"></span></li>
-			<li class="sortitem">网络制式<span class="mui-icon mui-icon-arrowdown"></span></li>
+			<li class="sortitem">
+				<span>新品</span>
+			</li>
+			<li class="sortitem">
+				<span>品牌<span class="mui-icon mui-icon-arrowdown"></span></span>
+				
+			</li>
+			<li class="sortitem">
+				<span>分辨率<span class="mui-icon mui-icon-arrowdown"></span></span>
+				
+			</li>
+			<li class="sortitem">
+				<span>网络制式<span class="mui-icon mui-icon-arrowdown"></span></span>
+				
+			</li>
 		</ul>
 	</div>
 </template>
@@ -39,6 +50,7 @@ export default {
 		height: 40px;
 		background: #fff;
 		border-bottom: 1px solid #808080;
+		max-width: 636px;
 		.sortbar {
 			position: absolute;
 			left: 0;
@@ -53,7 +65,11 @@ export default {
 				flex: 1;
 				line-height: 26px;
 				text-align: center;
-				background: #f0f0f0;
+				span {
+					display: inline-block;
+					background: #f0f0f0;
+					
+				}
 				
 			}
 		}

@@ -1,14 +1,19 @@
 
 <template>
 	<div class="productdetail">
-	
+		<appheader></appheader>
+		<smallnavbar></smallnavbar>	
+		<productshow></productshow>	
+
 
 	</div>
 </template>
 
 <script>
-import appheader from './components/header.vue'
 
+import appheader from './components/header.vue'
+import smallnavbar from './components/smallnavbar.vue'
+import productshow from './subpage/productdetail-subpage/productshow.vue';
 
 export default {
 
@@ -21,6 +26,10 @@ export default {
 		
 	},
 	components: {
+		appheader,
+		smallnavbar,
+		productshow
+
 	},
 	created(){
 		
