@@ -36,7 +36,7 @@
 		},
 		computed: {//this.$route.path
 			isFooterShow() {
-				if(this.$route.fullPath==='/mycart'||this.$route.fullPath==='/login') {
+				if(this.$route.fullPath==='/mycart'||this.$route.fullPath==='/login'||this.$route.fullPath==='/productdetail') {
 					return isFooterShow=false
 				}else {
 					return isFooterShow=true
