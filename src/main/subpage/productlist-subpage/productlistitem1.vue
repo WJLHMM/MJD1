@@ -1,56 +1,48 @@
 <template>
-	<ul class="productctlistitemwrap">
-		<router-link 
-			class="productctlistitem" 
-			v-for = "item in parproductlist" 
-			:key="item.id" 
-			:to="'/productdetail?proname=' + item.proname"
-			tag="li"
-		>
-			<div class="proimg">
-				<img class="proimgdetail" :src="item.imgurl">
+	<router-link to="/productdetail" class="productctlistitem" tag="div">
+		<div class="proimg">
+			<img class="proimgdetail" src="https://img14.360buyimg.com/mobilecms/s316x316_jfs/t1/15900/19/5542/358122/5c4122caEefdb3f68/613efa2b16afc230.jpg!q70.dpg.webp">
+		</div>
+		<div class="prodescwrapper">
+			<div class="prodesc">
+				<p class="proname">荣耀8X 千元屏霸 91%屏占比 2000万AI双摄 6GB+64GB 魅海蓝 移动联通电信4G全面屏手机 双卡双待</p>
 			</div>
-			<div class="prodescwrapper">
-				<div class="prodesc">
-					<p class="proname">{{item.productbreif}}</p>
-				</div>
-				<div class="prosize">
-					<span class="memory_size1">{{item.memory_size1}}</span>
-					<span class="memory_size2">{{item.memory_size2}}</span>
-					<span class="prosize">{{item.prosize}}</span>
-				</div>
-				<div class="uprice">
-					<span class="currency">￥</span>
-					<span class="price">{{item.price}}<small>.00</small></span>
-					<div class="possiblegift" v-show="item.possiblegift">
-						<img :src="item.possiblegift">
-					</div>
-				</div>
-				<div class="prosellerinf" v-show="item.isselfselling">
-					<div class="isselfselling">
-						<img :src="item.isselfselling">
-					</div>
-					<div class="easebuy"  v-show="item.easebuy">
-						<img :src="item.easebuy">
-					</div>
-					<div class="stockinf" v-show="item.stockinf">
-						<img :src="item.stockinf">
-					</div>
-					<div class="proappraise">
-						<span class="appraisevolume">{{item.appraisevolume}}</span>
-						<span class="goodapprasise"v-show="item.goodapprasise">{{item.goodapprasise}}%</span>
-					</div>
-				</div>
-				<div class="sellerinfo">
-					<p class="proseller">{{item.proseller}}<span class="mui-icon mui-icon-forward"></span></p>
-					<p class="secondhandpro">同款二手
-						<span class="mui-icon mui-icon-forward"></span>
-					</p>
+			<div class="prosize">
+				<span class="memory_size1">6GB</span>
+				<span class="memory_size2">64GB</span>
+				<span class="prosize">6.5英寸</span>
+			</div>
+			<div class="uprice">
+				<span class="currency">￥</span>
+				<span class="price">1599<small>.00</small></span>
+				<div class="possiblegift">
+					<img src="//img11.360buyimg.com/jdphoto/s28x28_jfs/t13501/220/748441324/1050/f2add5a2/5a128a72N857b1c57.png">
 				</div>
 			</div>
-		</router-link >
+			<div class="prosellerinf">
+				<div class="isselfselling">
+					<img src="//img11.360buyimg.com/jdphoto/s48x28_jfs/t1/12264/37/1979/1085/5c185d6dEba7743da/c5ab4d78f8bf4d90.png">
+				</div>
+				<div class="easebuy">
+					<img src="//img11.360buyimg.com/jdphoto/s68x28_jfs/t28474/79/699858248/2214/bced3f94/5bfb58faNfdbaaf9e.png">
+				</div>
+				<div class="stockinf">
+					<img src="//img11.360buyimg.com/jdphoto/s68x28_jfs/t7507/91/1460204614/1824/e64a9c4b/599cf570Ncd27b2f9.png">
+				</div>
+				<div class="proappraise">
+					<span class="appraisevolume">128万条评价</span>
+					<span class="goodapprasise"v-show="false">好评率98%</span>
+				</div>
+			</div>
+			<div class="sellerinfo">
+				<p class="proseller">荣耀京东自营旗舰店<span class="mui-icon mui-icon-forward"></span></p>
+				<p class="secondhandpro">同款二手
+					<span class="mui-icon mui-icon-forward"></span>
+				</p>
+			</div>
+		</div>
 		
-	</ul >
+	</router-link >
 
 </template>
 
@@ -81,11 +73,10 @@ export default {
 </script>
 
 <style scoped lang="less">
-.productctlistitemwrap{margin-top:130px;}
 .productctlistitem {
 	width: 100%;
 	height:144px;
-	
+	margin-top:130px;
 	display: flex;
 	justify-content: space-between; 
 	align-items: center;

@@ -1,30 +1,32 @@
 <template>
-	<div class="sellerwrapper">
-		<div class="sellername">
-			<span class="sellerlogo">
-				<img class="shopLogo" id="shopLogo" src="//img13.360buyimg.com/cms/jfs/t1/7612/15/4826/4894/5bdbee52E3beb1314/3a4a0a5cddabfa59.jpg!q70.dpg">
-			</span>
-			<span class="sellername">荣耀京东自营旗舰店</span>
-			<span class="isselfseller">京东自营</span>
-		</div>
-		<div class="sellproduct">
-			<div class="fanamount">
-				<span class="amount">1000000</span>
-				<span class="amount">粉丝人数</span>
+	<div class="sellercontainer">
+		<div class="selleritem">
+			<div class="sellername">
+				<span class="sellerlogo">
+					<img class="shopLogo" id="shopLogo" :src="parselleritem.shopLogourl">
+				</span>
+				<span class="sellername">{{parselleritem.proseller}}</span>
+				<span class="isselfseller">京东自营</span>
 			</div>
-			<div class="productamount">
-				<span>1000</span>
-				<span>全部商品</span>
+			<div class="sellproduct">
+				<div class="fanamount">
+					<span class="amount">{{parselleritem.fanamount}}</span>
+					<span class="amount">粉丝人数</span>
+				</div>
+				<div class="productamount">
+					<span>{{parselleritem.productamount}}</span>
+					<span>全部商品</span>
+				</div>
 			</div>
-		</div>
-		<div class="sellerfocus">
-			<div class="isfocused">
-				<span class="mui-icon mui-icon-star-filled"></span>
-				已关注店铺
-			</div>
-			<div class="enterseller">
-				<span class="mui-icon mui-icon-home-filled"></span>
-				进入店铺
+			<div class="sellerfocus">
+				<div class="isfocused">
+					<span class="mui-icon mui-icon-star-filled"></span>
+					已关注店铺
+				</div>
+				<div class="enterseller">
+					<span class="mui-icon mui-icon-home-filled"></span>
+					进入店铺
+				</div>
 			</div>
 		</div>
 	</div>
@@ -33,14 +35,14 @@
 <script>
 
 export default {
-
+	props:['parselleritem']
 
 }
 
 </script>
 
 <style scoped lang="less">
-.sellerwrapper {
+.selleritem {
 	display: flex; 
 	flex-direction: column;
 	align-items: center;
@@ -64,9 +66,10 @@ export default {
 			}
 		}
 		.sellername {
-			width:126px;
+			width:200px;
 			font-size: 14px; 
 			color:#333;
+			white-space: nowrap;
 		}
 		.isselfseller {
 		    display: inline-block;

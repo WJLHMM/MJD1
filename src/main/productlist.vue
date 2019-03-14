@@ -4,7 +4,8 @@
 		<search></search>
 		<smallnavbar></smallnavbar>
 		<smallbar2></smallbar2>
-		<productlistitem></productlistitem>
+		<productlistitem :parproductlist=productlist></productlistitem>
+		<br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br>
 	</div>
 </template>
 
@@ -18,11 +19,27 @@ export default {
 
 	data(){
 		return {
-			
+			productlist:null,
+			productlistname:null
 		}
 	},
 	methods: {
-		
+		getproductlistdata() {
+			this.$http.get('productlist.json').then(res=> {
+				if(res.body.success) {
+					this.productlist=[...res.body.data[this.productlistname]]
+				}else {
+					Toast({
+					message: '读取数据失败',
+					position: 'middle',
+					duration: 3000
+					});
+				}
+			}, (e) => {
+				console.log(e)
+			})
+		}
+
 	},
 	components: {
 		search,
@@ -31,8 +48,14 @@ export default {
 		productlistitem
 	},
 	created(){
-		
-	}
+		this.getproductlistdata()
+		this.productlistname = this.$route.query.item
+	},
+	// destroyed() {
+	// 	this.productlist=null,
+	// 	this.productlistname=null
+	// }
+
 }
 </script>
 

@@ -88,6 +88,15 @@ export default {
 	created(){
 		this.getmjdindexlist()
 		
+	},
+	destroyed () {
+		this.indswpier=[],
+		this.indbrandshow=[],
+		this.boxlist=[],
+		this.indscrollnewstext=[],
+		this.sksection=[],
+		this.newyearprolist=[],
+		this.newyearprolist2=[]
 	}
 }
 </script>

@@ -46,7 +46,7 @@ export default {
 	components: {
 	},
 	created(){
-		if(this.$route.fullPath=='/productlist'){
+		if((this.$route.fullPath).indexOf('productlist')){
 			this.datalist = [
 				{title:'综合',icon:'mui-icon mui-icon-arrowdown'},
 				{title:'销量',icon:''},

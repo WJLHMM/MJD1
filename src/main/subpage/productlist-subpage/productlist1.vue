@@ -1,12 +1,6 @@
 <template>
-	<ul class="productctlistitemwrap">
-		<router-link 
-			class="productctlistitem" 
-			v-for = "item in parproductlist" 
-			:key="item.id" 
-			:to="'/productdetail?proname=' + item.proname"
-			tag="li"
-		>
+	<router-link to="/productdetail" tag="a">
+		<div class="productctlistitem" v-for="item in parproductlist" :key="item.id">
 			<div class="proimg">
 				<img class="proimgdetail" :src="item.imgurl">
 			</div>
@@ -26,11 +20,11 @@
 						<img :src="item.possiblegift">
 					</div>
 				</div>
-				<div class="prosellerinf" v-show="item.isselfselling">
-					<div class="isselfselling">
+				<div class="prosellerinf">
+					<div class="isselfselling" v-show="item.isselfselling">
 						<img :src="item.isselfselling">
 					</div>
-					<div class="easebuy"  v-show="item.easebuy">
+					<div class="easebuy" v-show="item.easebuy">
 						<img :src="item.easebuy">
 					</div>
 					<div class="stockinf" v-show="item.stockinf">
@@ -38,7 +32,7 @@
 					</div>
 					<div class="proappraise">
 						<span class="appraisevolume">{{item.appraisevolume}}</span>
-						<span class="goodapprasise"v-show="item.goodapprasise">{{item.goodapprasise}}%</span>
+						<span class="goodapprasise" v-show="item.appraisevolume">{{item.appraisevolume}}</span>
 					</div>
 				</div>
 				<div class="sellerinfo">
@@ -48,9 +42,8 @@
 					</p>
 				</div>
 			</div>
-		</router-link >
-		
-	</ul >
+		</div>
+	</router-link >
 
 </template>
 
@@ -81,11 +74,11 @@ export default {
 </script>
 
 <style scoped lang="less">
-.productctlistitemwrap{margin-top:130px;}
+
 .productctlistitem {
 	width: 100%;
 	height:144px;
-	
+	margin-top:130px;
 	display: flex;
 	justify-content: space-between; 
 	align-items: center;

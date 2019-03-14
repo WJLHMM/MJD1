@@ -84,6 +84,13 @@ export default {
 	    deep: true
 	  } 
 	},
+	destroysed(){
+		this.catalogyList = null,
+		this.catalogyListdetail = null,
+		this.catalogynavheader = null,
+		this.id = null,
+		this.cid = null
+	}
 }
 </script>
 

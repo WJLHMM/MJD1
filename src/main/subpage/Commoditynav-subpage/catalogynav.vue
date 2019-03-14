@@ -6,7 +6,7 @@
 		<div class="catalogynavdeteils">
 			<ul class="catalogynavitemwrap">
 				
-				<router-link to="/productlist"
+				<router-link :to="'/productlist?item=' + item.productname"
 					tag="li"
 					class="catalogyitem" 
 					v-for="(item,index) in parcatalogyListdetail" 
