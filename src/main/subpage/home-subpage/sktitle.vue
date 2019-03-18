@@ -35,7 +35,7 @@ export default {
 	},
 	methods: {
 		getcurrenttime(){
-			// 进场确定时间段
+			// 确定进场时间段
 			this.currenttime = new Date();
 			this.hoursdata = this.currenttime.getHours();
 			this.minutesdata = this.currenttime.getMinutes();
@@ -53,7 +53,7 @@ export default {
 			// console.log(this.i)
 			//确定是什么场次
 			this.skroundtitle = this.skround[this.i];
-			//进一步确定场次时间
+			//进一步确定场次间隔时间
 			this.intervaltimenumber = parseInt(this.skroundtitle)+this.intervaltime[this.i]-1;
 			//计算每个场次的小时，分钟 秒的剩余时间
 			if ((this.intervaltimenumber-this.hoursdata)<10){//如果是个位数，前面加一个零

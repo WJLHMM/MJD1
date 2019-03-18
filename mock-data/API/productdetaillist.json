@@ -5,6 +5,7 @@
 		{
 			"level":0,
 			"id":0,
+			"productitemname":"苹果",
 			"proname":"Apple iPhone XR",
 			"productbreif":"Apple iPhone XR (A2108) 128GB 黑色 移动联通电信4G手机 双卡双待",
 			"memory_size1":"128G",
@@ -31,6 +32,7 @@
 		{
 			"level":0,
 			"id":1,
+			"productitemname":"苹果",
 			"proname":"Apple iPhone X",
 			"productbreif":"Apple iPhone X (A1865) 64GB 深空灰色 移动联通电信4G手机",
 			"memory_size1":"64G",
@@ -57,6 +59,7 @@
 		{
 			"level":0,
 			"id":2,
+			"productitemname":"苹果",
 			"proname":"Apple iPhone 8 Plus",
 			"productbreif":"Apple iPhone 8 Plus (A1864) 64GB 深空灰色 移动联通电信4G手机",
 			"memory_size1":"64G",
@@ -84,6 +87,7 @@
 		{
 			"level":0,
 			"id":3,
+			"productitemname":"苹果",
 			"proname":"Apple iPhone Xs Max",
 			"productbreif":"Apple iPhone XS Max (A2104) 64GB 金色 移动联通电信4G手机 双卡双待",
 			"memory_size1":"64G",
@@ -110,6 +114,7 @@
 		{
 			"level":0,
 			"id":4,
+			"productitemname":"苹果",
 			"proname":"Apple iPhone XS",
 			"productbreif":"Apple iPhone XS (A2100) 64GB 深空灰色 移动联通电信4G手机",
 			"memory_size1":"64G",
@@ -135,6 +140,7 @@
 		{
 			"level":0,
 			"id":5,
+			"productitemname":"华为",
 			"proname":"华为 HUAWEI Mate 20",
 			"productbreif":"华为 HUAWEI Mate 20 麒麟980AI智能芯片全面屏超微距影像超大广角徕卡三摄6GB+128GB亮黑色全网通版双4G手机",
 			"memory_size1":"128G",
@@ -160,6 +166,7 @@
 		{
 			"level":0,
 			"id":6,
+			"productitemname":"华为",
 			"proname":"华为 HUAWEI Mate 20 Pro",
 			"productbreif":"华为 HUAWEI Mate 20 Pro (UD)屏内指纹版麒麟980芯片全面屏超大广角徕卡三摄8GB+128GB亮黑色全网通双4G手机",
 			"memory_size1":"128G",
@@ -185,6 +192,7 @@
 		{
 			"level":0,
 			"id":7,
+			"productitemname":"华为",
 			"proname":"华为 HUAWEI 畅享9 Plus",
 			"productbreif":"华为 HUAWEI 畅享9 Plus 6GB+128GB 极光紫 全网通 四摄超清全面屏大电池 移动联通电信4G手机 双卡双待",
 			"memory_size1":"128G",
@@ -210,6 +218,7 @@
 		{
 			"level":0,
 			"id":8,
+			"productitemname":"华为",
 			"proname":"华为 HUAWEI P20",
 			"productbreif":"华为 HUAWEI P20 AI智慧徕卡双摄全面屏游戏手机 6GB+64GB 极光色 全网通移动联通电信4G手机 双卡双待",
 			"memory_size1":"64G",
@@ -235,6 +244,7 @@
 		{
 			"level":0,
 			"id":9,
+			"productitemname":"华为",
 			"proname":"华为新品 HUAWEI nova 4",
 			"productbreif":"【千玺代言】华为新品 HUAWEI nova 4 极点全面屏手机 4800万超广角三摄 8GB+128GB 亮黑色 全网通双卡双待",
 			"memory_size1":"128G",
@@ -260,6 +270,7 @@
 		{
 			"level":0,
 			"id":10,
+			"productitemname":"耳机",
 			"proname":"漫步者（EDIFIER）W200BT经典版",
 			"productbreif":"漫步者（EDIFIER）W200BT经典版 磁吸入耳式 无线运动蓝牙线控耳机 手机耳机 音乐耳机 带麦可通话 黑色",
 			"memory_size1":"",
@@ -285,6 +296,7 @@
 		{
 			"level":0,
 			"id":11,
+			"productitemname":"耳机",
 			"proname":"Bose QuietControl 30",
 			"productbreif":"Bose QuietControl 30 无线耳机 QC30耳塞式蓝牙降噪耳麦",
 			"memory_size1":"",
@@ -310,6 +322,7 @@
 		{
 			"level":0,
 			"id":12,
+			"productitemname":"耳机",
 			"proname":"Apple  AirPods 蓝牙无线耳机",
 			"productbreif":"Apple  AirPods 蓝牙无线耳机",
 			"memory_size1":"",
@@ -335,6 +348,7 @@
 		{
 			"level":0,
 			"id":13,
+			"productitemname":"耳机",
 			"proname":"三星（SAMSUNG）Gear IconX 2018升级款",
 			"productbreif":"三星（SAMSUNG）Gear IconX 2018升级款 真无线蓝牙运动耳机 黑色 入耳式 智能监测 智能语音 独立音乐播放",
 			"memory_size1":"",
@@ -360,7 +374,8 @@
 		{
 			"level":0,
 			"id":14,
-			"proname":"索尼（SONY）WI-1000X",
+			"productitemname":"耳机",
+			"proname":"索尼（SONY）WI-1000X Hi-Res颈挂式",
 			"productbreif":"索尼（SONY）WI-1000X Hi-Res颈挂式 入耳式 无线蓝牙耳机 降噪耳机 手机通话 黑色",
 			"memory_size1":"128G",
 			"memory_size2":"8GB",

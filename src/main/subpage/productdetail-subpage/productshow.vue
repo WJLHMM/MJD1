@@ -123,7 +123,6 @@ export default {
 
 	},
 	created(){
-		
 	},
 	props:['parproductitem']
 }

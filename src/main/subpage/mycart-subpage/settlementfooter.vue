@@ -43,6 +43,7 @@
 				<button class="settleclick">
 					<span class="text1">去结算</span>
 					<span>(4件)</span>
+					<!-- <span>{{parlastestcartlist}}</span> -->
 				</button>
 			</div>
 		</div>
@@ -67,7 +68,8 @@ export default {
 
 	created(){
 
-	}
+	},
+	props:['parlastestcartlist']
 }
 </script>
 

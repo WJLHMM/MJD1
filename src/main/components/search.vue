@@ -48,7 +48,6 @@
 		created(){
             if((this.$route.fullPath).indexOf('commoditynav')||(this.$route.fullPath).indexOf('productlist')){
                 this.isShowbb = true 
-               
             }
 
 		},
@@ -141,6 +140,4 @@
         }
     }
 }
-
-	
 </style>

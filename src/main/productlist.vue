@@ -51,10 +51,10 @@ export default {
 		this.getproductlistdata()
 		this.productlistname = this.$route.query.item
 	},
-	// destroyed() {
-	// 	this.productlist=null,
-	// 	this.productlistname=null
-	// }
+	destroyed() {
+		this.productlist=null,
+		this.productlistname=null
+	}
 
 }
 </script>

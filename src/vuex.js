@@ -8,7 +8,8 @@ Vue.use(Vuex)
 var store = new Vuex.Store({
 	state:{
 		storescrollTop:null,
-		storeisLogin:false
+		storeisLogin:false,
+		storecartlist:[]
 
 	},
 	mutations: {
@@ -18,9 +19,11 @@ var store = new Vuex.Store({
 		updateisLogin(state,isLoginfromlogin){
 			state.storeisLogin = isLoginfromlogin
 		}
+		// updatecartlist(state,carlistfromoperationbar){
+		// 	state.storecartlist.unshift(carlistfromoperationbar)
+		// }
 	},
 	getters:{}
-	
 	
 })
 

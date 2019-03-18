@@ -16,7 +16,7 @@
 				<span>购物车</span>
 			</div>
 			<div class="buttongroup">
-				<button class="addtocart">加入购物车</button>
+				<button class="addtocart" @click.self='addcart(parproname)'>加入购物车</button>
 				<button class="buynow">立即购买</button>
 			</div>
 		
@@ -31,18 +31,25 @@
 export default {
 	data() {
 		return {
-			
-			
+			cartlist:[]
 		}
 	},
 	methods: {
-	   
-
+		addcart(parproname) {
+			// this.$store.commit('updatecartlist',parproname)
+			
+			// console.log(this.cartlist)
+			this.cartlist = JSON.parse(localStorage.getItem('cartlist')||'[]');
+			this.cartlist.unshift(parproname);
+			localStorage.setItem("cartlist",window.JSON.stringify(this.cartlist))//这里不加window.老报错
+			// console.log(this.cartlist)
+		}
 	},
 
 	created(){
 
-	}
+	},
+	props:['parproname']
 }
 </script>
 

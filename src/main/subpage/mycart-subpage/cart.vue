@@ -16,13 +16,13 @@
 					}"
 
 				>
-					<input class="selfsellingtotal" type="radio" name="">
+					<input class="selfsellingtotal" ref='selfsellingtotal' type="radio" name="">
 					<span class="selfsellingtitlename">自营产品</span>
 				</div>
 			</div>
-			<div class="selfsellingpro" v-for="item in parselfselllist" :key="item.id">
+			<div class="selfsellingpro" v-for="item in parcartlist" :key="item.id">
 				<div class="proitemradiowrap">
-					<input class="proitemradio" type="radio" name="">
+					<input class="proitemradio" ref='proitemradio' type="radio" name="">
 				</div>
 				<div class="selfsellingproinf" >
 					<div class="proimgdesc">
@@ -40,7 +40,7 @@
 					</div>
 					<div class="propayinfoamount">
 						<div class="propayprompt" v-if="item.payinfo">{{item.payinfo}}</div>
-						<div class="uprice">{{item.currency}}{{item.uprice}}</div>
+						<div class="uprice"><small>{{item.currency}}</small>{{item.uprice}}<small>.00</small></div>
 						<div class="pronumbox">
 							<div class="mui-numbox" data-numbox-min='1' data-numbox-max='9'>
 								<button class="mui-btn mui-btn-numbox-minus" type="button">-</button>
@@ -159,9 +159,22 @@ export default {
 	        return this.$store.state.storescrollTop
 	    }
 	},
-	props:['parselfselllist','parunitedselllist'],
+	props:['parcartlist','parunitedselllist'],
 	created() {
-		
+	},
+	mounted() {
+		console.log(this.$refs.selfsellingtotal)
+		console.log(this.$refs.proitemradio)
+		// this.$nextTick(() => { 
+		// 	let itemdom = this.$refs.proitemradio
+		// 	for(let i=0;i<itemdom.length;i++) {
+		// 		console.log(itemdom[i])
+		// 	}
+		// }) 
+	},
+	updated() {
+		console.log(this.$refs.selfsellingtotal)
+		console.log(this.$refs.proitemradio)
 	}
 }
 </script>
@@ -306,6 +319,10 @@ export default {
 						font-weight: bold;
 						font-size: 18px;
 						color:red;
+						small{
+							font-size: 12px;
+							
+						}
 					}
 					.pronumbox {
 					}

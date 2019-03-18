@@ -1,13 +1,13 @@
 
 <template>
 	<div class="productdetail">
-		<appheader></appheader>
+		<appheader :paritem=item></appheader>
 		<smallnavbar></smallnavbar>	
 		<productshow :parproductitem=productitem></productshow>	
 		<seller :parselleritem=selleritem></seller>
 		<divgap></divgap>
 		<appraisearea></appraisearea>
-		<operationbar></operationbar>
+		<operationbar :parproname=proname></operationbar>
  		<br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br>
 
 	</div>
@@ -27,10 +27,15 @@ export default {
 
 	data(){
 		return {
+			// 如果初始值为null，会报（warnError in render: "TypeError: Cannot read property 'imgurl' of null）"
+			// 所以相关item先设为{}
 			sellerlist:null,
-			selleritem:null,
+			selleritem:{},
 			productdetail:null,
-			productitem:null
+			productitem:{},
+			item:'',
+			proname:''
+
 		}
 	},
 	methods: {
@@ -41,13 +46,13 @@ export default {
 				this.productdetail.some((item,index)=> {
 					// 在数组的some方法中，如果return true;就会立刻终止这个数组的循环
 					if(this.proname==item.proname){
-						console.log(index);
 						this.productitem =this.productdetail[index]
+						this.proname = this.productitem.proname
+						this.item = this.productitem.productitemname
+						// console.log(this.item)
 						return true;
 					}
 				})
-				
-				console.log(this.productitem)
 			}	
 			else {Toast({
 				message: '读取数据失败',
@@ -66,13 +71,11 @@ export default {
 				this.sellerlist.some((item,index)=> {
 					// 在数组的some方法中，如果return true;就会立刻终止这个数组的循环
 					if(this.proname==item.proname){
-						console.log(index);
 						this.selleritem =this.sellerlist[index]
 						return true;
 					}
 				})
 				
-				console.log(this.selleritem)
 			}	
 			else {Toast({
 				message: '读取数据失败',
@@ -96,10 +99,17 @@ export default {
 
 	},
 	created(){
+		this.proname = this.$route.query.proname
 		this.getproductdetaillist()
 		this.getsellerlist()
-		this.proname = this.$route.query.proname
-		console.log(this.proname)
+	},
+	mounted(){
+	},
+	destroyed() {
+		this.sellerlist=null,
+		this.selleritem=null,
+		this.productdetail=null,
+		this.productitem=null
 	}
 }
 </script>

@@ -26,17 +26,13 @@
 				let scrolltop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
 				this.$store.commit('updatescrolltop',scrolltop);
 			},
-
-			
 		},
 		components: {
-			
 			appfooter
-			
 		},
 		computed: {//this.$route.path
 			isFooterShow() {
-				if(this.$route.fullPath==='/mycart'||this.$route.fullPath==='/login'||this.$route.fullPath==='/productdetail') {
+				if(this.$route.fullPath==='/mycart'||this.$route.fullPath==='/login'||this.$route.fullPath.indexOf('productdetail')!=-1) {
 					return isFooterShow=false
 				}else {
 					return isFooterShow=true
