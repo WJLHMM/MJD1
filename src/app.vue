@@ -13,7 +13,7 @@
 	
 	import appfooter from './main/components/footer.vue';
 
-	
+	import mui from './lib/mui-master/dist/js/mui.min.js';
 
 	export default {
 		data(){
@@ -38,14 +38,18 @@
 					return isFooterShow=true
 				}
 				
-			}
+			} 
+	        // footer_cartlistlength() {
+	        //     return this.$store.state.storecartlistlength
+	        // }
 		},
 		created(){
 			
 		},
 		mounted(){
 			window.addEventListener('scroll', this.handleScroll)
-
+			mui('body').on('click','a',function(){document.location.href=this.href;});
+			mui('body').on('tap','a',function(){document.location.href=this.href;});
 		},
 		destroyed () {
   			window.removeEventListener('scroll', this.handleScroll)
@@ -55,8 +59,10 @@
 </script>
 
 <style lang='less'>
+
 html, body {
 	border:0;
+	touch-action: manipulation; 
 	.container {
 		display:flex;
 		/* height: 100%; */

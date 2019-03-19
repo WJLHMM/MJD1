@@ -42,7 +42,7 @@
 				</div>
 				<button class="settleclick">
 					<span class="text1">去结算</span>
-					<span>(4件)</span>
+					<span>({{cartlistlengthfromoperationbar}}件)</span>
 					<!-- <span>{{parlastestcartlist}}</span> -->
 				</button>
 			</div>
@@ -67,8 +67,16 @@ export default {
 	},
 
 	created(){
-
+		this.cartlistlengthfromoperationbar = JSON.parse(localStorage.getItem('cartlistlength')||'[]');
 	},
+	computed: {
+        footer_isLogin() {
+            return this.$store.state.storeisLogin
+        }, 
+        cartlistlengthfromvuex(){
+        	return this.$store.state.storecartlistlength
+        }
+    },
 	props:['parlastestcartlist']
 }
 </script>

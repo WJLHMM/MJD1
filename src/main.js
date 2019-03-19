@@ -8,7 +8,6 @@ Vue.http.options.root = '/mock-data/Api';
 import  router from './router.js'
 import  store from './vuex.js'
 
-
 import './lib/mui-master/dist/css/mui.css'
 import './lib/mui-master/dist/css/icons-extra.css'
 import './lib/default.less'

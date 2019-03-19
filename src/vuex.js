@@ -9,8 +9,8 @@ var store = new Vuex.Store({
 	state:{
 		storescrollTop:null,
 		storeisLogin:false,
-		storecartlist:[]
-
+		storecartlist:[],
+		storecartlistlength:0
 	},
 	mutations: {
 		updatescrolltop(state,scrollTopfromapp){
@@ -18,10 +18,13 @@ var store = new Vuex.Store({
 		},
 		updateisLogin(state,isLoginfromlogin){
 			state.storeisLogin = isLoginfromlogin
+		},
+		updatecartlist(state,carlistfromoperationbar){
+			state.storecartlist.concat(carlistfromoperationbar)
+		},	
+		updatecartlistlength(state,carlistlengthfromoperationbar){
+			state.storecartlistlength = carlistlengthfromoperationbar
 		}
-		// updatecartlist(state,carlistfromoperationbar){
-		// 	state.storecartlist.unshift(carlistfromoperationbar)
-		// }
 	},
 	getters:{}
 	

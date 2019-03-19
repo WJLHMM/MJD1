@@ -44,7 +44,7 @@
 						<div class="pronumbox">
 							<div class="mui-numbox" data-numbox-min='1' data-numbox-max='9'>
 								<button class="mui-btn mui-btn-numbox-minus" type="button">-</button>
-								<input id="test" class="mui-input-numbox" type="number" value="5" />
+								<input id="test" class="mui-input-numbox" type="number" value="1" />
 								<button class="mui-btn mui-btn-numbox-plus" type="button">+</button>
 							</div>
 						</div>
@@ -103,7 +103,7 @@
 						<div class="pronumbox">
 							<div class="mui-numbox" data-numbox-min='1' data-numbox-max='9'>
 								<button class="mui-btn mui-btn-numbox-minus" type="button">-</button>
-								<input id="test" class="mui-input-numbox" type="number" value="5" />
+								<input id="test" class="mui-input-numbox" type="number" value="1" />
 								<button class="mui-btn mui-btn-numbox-plus" type="button">+</button>
 							</div>
 						</div>
@@ -139,7 +139,7 @@
 </template>
 
 <script>
-	
+import mui from '../../../lib/mui-master/dist/js/mui.min.js';
 export default {
 
 	data() {
@@ -163,18 +163,26 @@ export default {
 	created() {
 	},
 	mounted() {
-		console.log(this.$refs.selfsellingtotal)
-		console.log(this.$refs.proitemradio)
+		
+	},
+	updated() {
+		// console.log(this.$refs.selfsellingtotal)
+		// console.log(this.$refs.proitemradio)
+
+		if(this.$refs.selfsellingtotal.checked) {
+			for(let i=0;i<this.$refs.proitemradio.length;i++) {
+				this.$refs.proitemradio[i].checked = true
+			}
+		}
+
 		// this.$nextTick(() => { 
 		// 	let itemdom = this.$refs.proitemradio
 		// 	for(let i=0;i<itemdom.length;i++) {
 		// 		console.log(itemdom[i])
 		// 	}
-		// }) 
-	},
-	updated() {
-		console.log(this.$refs.selfsellingtotal)
-		console.log(this.$refs.proitemradio)
+		// })
+		// 注意在v-for的情况先，初始化，以及dom的选择放在updated钩子函数中
+		mui('.mui-numbox').numbox();
 	}
 }
 </script>
@@ -182,7 +190,7 @@ export default {
 <style scoped lang="less">
 .cart {
 	width: 100%;
-
+    touch-action: none; 
 	.selfselling {
 		width:100%;
 		border-bottom:1px solid #808080;
@@ -191,6 +199,7 @@ export default {
 				width:100%;
 				max-width: 636px;
 				height:40px;
+				// overflow-y:scroll
 			.selfsellingtitle {
 				width:100%;
 				height:40px;
@@ -325,6 +334,11 @@ export default {
 						}
 					}
 					.pronumbox {
+						// .mui-numbox {
+						// 	.mui-btn{
+	     //                      touch-action: none; 
+						// 	}
+						// }
 					}
 				}
 				.prootheroperation {

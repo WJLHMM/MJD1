@@ -13,7 +13,7 @@
 		</router-link>
 
 		<router-link to='/mycart'class="mui-tab-item" >
-			<i class="iconfont cart-iconfont">&#xe618;<span class="mui-badge cart-badge">9</span></i>
+			<i class="iconfont cart-iconfont">&#xe618;<span class="mui-badge cart-badge">{{cartlistlengthfromoperationbar}}</span></i>
 			<span class="mui-tab-label cart-text">购物车</span>
 		</router-link>
 
@@ -30,24 +30,32 @@
 export default {
 	data(){
 		return {
-			
+			cartlistlengthfromoperationbar:0
 		}
 	},
 	methods: {
 		
 	},
 	created(){
-		
+		this.cartlistlengthfromoperationbar = JSON.parse(localStorage.getItem('cartlistlength')||'[]');
 	},
     computed: {
         footer_isLogin() {
             return this.$store.state.storeisLogin
-        }
-    }
+        }, 
+  		
+
+
+    },
+    updated(){
+
+    },
+    props:['']
 }
 </script>
 
 <style scoped lang='less'>
+
 .muibarfixedcontainer {
 	position:fixed;
 	width: 100%;

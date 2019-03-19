@@ -15,8 +15,11 @@ import cart from './subpage/mycart-subpage/cart.vue';
 import actionsheet from './subpage/mycart-subpage/actionsheet.vue';
 import settlementfooter from './subpage/mycart-subpage/settlementfooter.vue';
 
-export default {
+import Vue from 'vue'
+import { Toast } from 'mint-ui';
+Vue.component(Toast.name, Toast);
 
+export default {
 	data(){
 		return {
 			selfselllist:[],
@@ -51,9 +54,9 @@ export default {
 						// console.log(this.cartlist)
 				}else {
 					Toast({
-					message: '读取数据失败',
-					position: 'middle',
-					duration: 3000
+						message: '读取数据失败',
+						position: 'middle',
+						duration: 3000
 					});
 				}
 			}, (e) => {

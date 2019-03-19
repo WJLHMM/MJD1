@@ -13,8 +13,15 @@ module.exports = {
 		new htmlWebpackPlugin({
 			template:path.join(__dirname,'./src/index.html'),
 			filename:'index.html'//指定内存中生成页面的名称可以自己取名
-		})//创建一个 在内存中生成HTML的插件
-		
+		}),//创建一个 在内存中生成HTML的插件
+		new webpack.ProvidePlugin({
+         mui: "mui",
+         "window.mui": "mui"
+	    }),
+	    // new webpack.DefinePlugin({
+	    //    'process.env': require('../config/dev.env')
+	    // }),
+
 	],
 	module:{
 		rules:[
@@ -29,7 +36,8 @@ module.exports = {
 	},
 	resolve: {
 		alias:{//修改vue的导入方式，使用没有阉割版的VUE文件,import时直接引入vue即可
-			'vue$':'vue/dist/vue.js'
+			'vue$':'vue/dist/vue.js',
+			'mui': path.resolve(__dirname, './src/lib/mui-master/dist/js/mui.js')
 		}
 	}
 }

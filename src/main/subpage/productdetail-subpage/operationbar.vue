@@ -12,7 +12,7 @@
 			</div>
 			<div class="cart">
 				<span class="mui-icon-extra mui-icon-extra-cart"></span>
-				<span class="mui-badge mui-badge-danger">1</span>
+				<span class="mui-badge mui-badge-danger">{{cartlistlength}}</span>
 				<span>购物车</span>
 			</div>
 			<div class="buttongroup">
@@ -26,33 +26,59 @@
 </template>
 
 <script >
-
+import Vue from 'vue'
+import { Toast } from 'mint-ui';
+Vue.component(Toast.name, Toast);
 
 export default {
 	data() {
 		return {
-			cartlist:[]
+			cartlist:[],
+			cartlistlength:0
 		}
 	},
 	methods: {
 		addcart(parproname) {
-			// this.$store.commit('updatecartlist',parproname)
-			
-			// console.log(this.cartlist)
 			this.cartlist = JSON.parse(localStorage.getItem('cartlist')||'[]');
-			this.cartlist.unshift(parproname);
+			console.log(!this.cartlist.includes(parproname))
+			if(!this.cartlist.includes(parproname)){
+				this.cartlist.unshift(parproname);
+			
+			}else {
+				Toast({
+					message: '该产品已经加入购物车',
+					position: 'middle',
+					duration: 1000
+				});
+			}
+			
+			this.cartlistlength = this.cartlist.length
 			localStorage.setItem("cartlist",window.JSON.stringify(this.cartlist))//这里不加window.老报错
-			// console.log(this.cartlist)
+			localStorage.setItem("cartlistlength",window.JSON.stringify(this.cartlistlength))//这里不加window.老报错
+			this.$store.commit('updatecartlistlength',this.cartlistlength)
+			this.$store.commit('updatecartlist',this.cartlist)
 		}
 	},
 
 	created(){
-
+			this.cartlist = JSON.parse(localStorage.getItem('cartlist')||'[]');
+			this.cartlistlength = JSON.parse(localStorage.getItem('cartlistlength')||'[]');
+			this.$store.commit('updatecartlistlength',this.cartlistlength)
+			this.$store.commit('updatecartlist',this.cartlist)
 	},
-	props:['parproname']
+	props:['parproname'],
+	updated(){
+		
+		// this.cartlistlength = this.cartlist.length
+	}
 }
 </script>
-
+<style>
+/* 全局样式 */
+.mint-toast {
+  background-color: red !important;
+}
+</style>
 <style scoped lang='less'>
 .operationfixcontainer {
 	position: fixed;
