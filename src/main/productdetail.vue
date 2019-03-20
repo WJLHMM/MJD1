@@ -29,9 +29,9 @@ export default {
 		return {
 			// 如果初始值为null，会报（warnError in render: "TypeError: Cannot read property 'imgurl' of null）"
 			// 所以相关item先设为{}
-			sellerlist:null,
+			sellerlist:[],
 			selleritem:{},
-			productdetail:null,
+			productdetail:[],
 			productitem:{},
 			item:'',
 			proname:''
@@ -104,12 +104,16 @@ export default {
 		this.getsellerlist()
 	},
 	mounted(){
+		console.log(this.$route.fullPath)
+	},
+	updated(){
+
 	},
 	destroyed() {
-		this.sellerlist=null,
-		this.selleritem=null,
-		this.productdetail=null,
-		this.productitem=null
+		this.sellerlist=[],
+		this.selleritem={},
+		this.productdetail=[],
+		this.productitem={}
 	}
 }
 </script>

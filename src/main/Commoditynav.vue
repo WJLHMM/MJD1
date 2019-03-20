@@ -1,4 +1,4 @@
-
+=
 <template>
 	<div class="commoditynav" onmousewheel="return false;">
 		<search></search>
@@ -20,11 +20,11 @@ export default {
 
 	data(){
 		return {
-			catalogyList:null,
-			catalogyListdetail:null,
-			catalogynavheader:null,
-			id:null,
-			cid:null
+			catalogyList:[],
+			catalogyListdetail:[],
+			catalogynavheader:'',
+			id:'',
+			cid:''
 			
 		}
 	},
@@ -85,11 +85,11 @@ export default {
 	  } 
 	},
 	destroysed(){
-		this.catalogyList = null,
-		this.catalogyListdetail = null,
-		this.catalogynavheader = null,
-		this.id = null,
-		this.cid = null
+		this.catalogyList=[],
+		this.catalogyListdetail=[],
+		this.catalogynavheader='',
+		this.id='',
+		this.cid=''
 	}
 }
 </script>

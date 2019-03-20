@@ -19,8 +19,8 @@ export default {
 
 	data(){
 		return {
-			productlist:null,
-			productlistname:null
+			productlist:{},
+			productlistname:''
 		}
 	},
 	methods: {
@@ -52,8 +52,8 @@ export default {
 		this.productlistname = this.$route.query.item
 	},
 	destroyed() {
-		this.productlist=null,
-		this.productlistname=null
+		this.productlist={},
+		this.productlistname=''
 	}
 
 }

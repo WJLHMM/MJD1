@@ -16,13 +16,24 @@
 					}"
 
 				>
-					<input class="selfsellingtotal" ref='selfsellingtotal' type="radio" name="">
+					<input 
+						class="selfsellingtotal" 
+						type="checkbox" 
+						v-model="picked" 
+						@click="selectallitem(parcartlist,picked)"
+					>
 					<span class="selfsellingtitlename">自营产品</span>
 				</div>
 			</div>
-			<div class="selfsellingpro" v-for="item in parcartlist" :key="item.id">
+			<div class="selfsellingpro" v-for="(item,index) in parcartlist" :key="item.id">
 				<div class="proitemradiowrap">
-					<input class="proitemradio" ref='proitemradio' type="radio" name="">
+					<input 
+						class="proitemradio" 
+						type="checkbox" 
+						:value="item.producmodel" 
+						v-model="pickedlist"
+						@click="selectitem(item.producmodel,parcartlist)"
+					>
 				</div>
 				<div class="selfsellingproinf" >
 					<div class="proimgdesc">
@@ -44,7 +55,15 @@
 						<div class="pronumbox">
 							<div class="mui-numbox" data-numbox-min='1' data-numbox-max='9'>
 								<button class="mui-btn mui-btn-numbox-minus" type="button">-</button>
-								<input id="test" class="mui-input-numbox" type="number" value="1" />
+								<input 
+									id="test" 
+									ref="setnumber"
+									class="mui-input-numbox" 
+									type="number" 
+									:value="index" 
+									@change="getnumber" 
+								/>
+									<!-- :value="index"  -->
 								<button class="mui-btn mui-btn-numbox-plus" type="button">+</button>
 							</div>
 						</div>
@@ -145,44 +164,98 @@ export default {
 	data() {
 
 		return {
+			isCheckall:true,
+			// picked: '',
+			pickedlist:[],
+			number:[]
 
 		}
 	},
 
 	methods: {
+		//全选操作
+		selectallitem(cartlist,picked) {
+			picked=!picked
+			if(picked){
+				cartlist.forEach((item)=> {
+					this.pickedlist.push(item.producmodel)
+				})
+			}else{
+				this.pickedlist=[]
+			}
+			localStorage.setItem('picked',window.JSON.stringify(picked))
+			localStorage.setItem('pickedlist',window.JSON.stringify(this.pickedlist))
+		},
+		//单选，全选操作
+		selectitem(itemname,cartlist){
 
+			if(!this.pickedlist.includes(itemname)){
+				this.pickedlist.push(itemname);
+			}
 
+			// 放在data，在selectitem方法中使用时候，会出现全选后，取消第一个，全选任然存在，第二个开始取消的现象
+			// 所以该种情况放在computed中
+			// if(this.pickedlist.length===cartlist.length){
+			// 	return this.picked = true
+			// }else{
+			// 	return this.picked = false
+			// }
+			// 
+
+		},
+		//获取每个numbox的值，发送到指定位置
+		getnumber(){
+			this.number.length=this.$refs.setnumber.length
+			for(let i=0;i<this.$refs.setnumber.length;i++) {
+				if(this.$refs.setnumber[i].value!=this.number[i]){
+					this.number[i]=this.$refs.setnumber[i].value
+				}
+			}
+			localStorage.setItem('number',window.JSON.stringify(this.number))
+		}
 	},
 
 	computed: {
 	    searchscrolltop() {
 	        return this.$store.state.storescrollTop
+	    },
+	    // 注意picked放在computed中，放在data，在selectitem方法中使用时候，会出现全选后，取消第一个，全选任然存在，第二个开始取消的现象
+	    picked:{
+	    	get() {
+		    	if(this.pickedlist.length===this.parcartlist.length){
+					return true
+
+				}else{
+
+					return false
+				}
+	    	},
+	    	set() {
+	    		
+	    	}
+
 	    }
 	},
 	props:['parcartlist','parunitedselllist'],
 	created() {
+		this.picked = JSON.parse(localStorage.getItem('picked'))
+		this.pickedlist = JSON.parse(localStorage.getItem('pickedlist'))
+		this.number = JSON.parse(localStorage.getItem('number'))
+		console.log(this.number)
+
 	},
 	mounted() {
 		
+		
 	},
 	updated() {
-		// console.log(this.$refs.selfsellingtotal)
-		// console.log(this.$refs.proitemradio)
-
-		if(this.$refs.selfsellingtotal.checked) {
-			for(let i=0;i<this.$refs.proitemradio.length;i++) {
-				this.$refs.proitemradio[i].checked = true
-			}
-		}
-
-		// this.$nextTick(() => { 
-		// 	let itemdom = this.$refs.proitemradio
-		// 	for(let i=0;i<itemdom.length;i++) {
-		// 		console.log(itemdom[i])
-		// 	}
-		// })
-		// 注意在v-for的情况先，初始化，以及dom的选择放在updated钩子函数中
+		
+		// 注意在v-for的情况下，初始化，以及dom的选择放在updated钩子函数中
 		mui('.mui-numbox').numbox();
+
+        // 注意在selectitem方法中发生的picklist的变化，需要在updated中存储到localStroage
+		localStorage.setItem('pickedlist',window.JSON.stringify(this.pickedlist))
+		localStorage.setItem('picked',window.JSON.stringify(this.picked))
 	}
 }
 </script>

@@ -2,12 +2,14 @@
 <template>
 	<div class="productshowcontainer">
 		<div class="mui-card">
+			<!-- 注意属性v-if如果不加，尽管页面可以渲染显示，但是会不断报错backend.js:1 GET http://localhost:3100/undefined 404 (Not Found) -->
 			<div 
 				class="mui-card-header mui-card-media" 
 				:style="{
 					'height':'375px',
 					'background-image':'url('+ parproductitem.imgurl +')'
 				}"
+				v-if="parproductitem.imgurl"
 			>
 				
 			</div>
@@ -47,7 +49,7 @@
 			<div class="promotion">
 					<div class="promotiontitle">促销</div>
 					<ul class="promotioncontent">
-						<li class="gift">
+						<li class="gift" v-show="parproductitem.possiblegift">
 							<span class="giftimg">赠品</span>
 							<span class="giftcontent">{{parproductitem.possiblegift}}</span>
 						</li>
@@ -59,7 +61,7 @@
 							<span class="vouchertitle">满额返券</span>
 							<span class="vouchercontent">{{parproductitem.fullreplacement}}</span>
 						</li>
-						<li class="promotionpackage">
+						<li class="promotionpackage" v-show="parproductitem.promotionpackagecontent">
 							<span class="promotionpackagetitle">优惠套餐</span>
 							<span class="promotionpackagecontent">{{parproductitem.promotionpackagecontent}}</span>
 						</li>
@@ -90,7 +92,7 @@
 					</p>
 					<button type=""></button>
 				</div>
-				<div class="goodsweight">
+				<div class="goodsweight" v-show="parproductitem.weight">
 					<span class="goodsweighttitle">重量</span>
 					<p class="goodsweightstatus">
 						{{parproductitem.weight}}
