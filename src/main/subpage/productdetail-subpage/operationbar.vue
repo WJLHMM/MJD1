@@ -40,7 +40,7 @@ export default {
 	methods: {
 		addcart(parproname) {
 			this.cartlist = JSON.parse(localStorage.getItem('cartlist')||'[]');
-			console.log(!this.cartlist.includes(parproname))
+			// console.log(!this.cartlist.includes(parproname))
 			if(!this.cartlist.includes(parproname)){
 				this.cartlist.unshift(parproname);
 			
