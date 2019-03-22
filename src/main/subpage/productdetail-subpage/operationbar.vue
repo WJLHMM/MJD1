@@ -61,15 +61,12 @@ export default {
 	},
 
 	created(){
-		this.cartlist = JSON.parse(localStorage.getItem('cartlist')||'[]');
+		// this.cartlist = JSON.parse(localStorage.getItem('cartlist')||'[]');
 		this.cartlistlength = JSON.parse(localStorage.getItem('cartlistlength')||'[]');
-		this.$store.commit('updatecartlistlength',this.cartlistlength)
-		this.$store.commit('updatecartlist',this.cartlist)
 	},
 	props:['parproname'],
 	updated(){
 		
-		// this.cartlistlength = this.cartlist.length
 	}
 }
 </script>

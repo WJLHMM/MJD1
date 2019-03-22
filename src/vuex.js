@@ -10,7 +10,9 @@ var store = new Vuex.Store({
 		storescrollTop:null,
 		storeisLogin:false,
 		storecartlist:[],
-		storecartlistlength:0
+		storecartlistlength:0,
+		storetotalsettmentnum:0,
+		storetotalsettmentamount:0
 	},
 	mutations: {
 		updatescrolltop(state,scrollTopfromapp){
@@ -24,6 +26,17 @@ var store = new Vuex.Store({
 		},	
 		updatecartlistlength(state,carlistlengthfromoperationbar){
 			state.storecartlistlength = carlistlengthfromoperationbar
+			localStorage.setItem('cartlistlengthfromvuex',window.JSON.stringify(state.storecartlistlength))
+		},
+		updatetotalsettmentnum(state,totalsettmentnumfromcart){
+			state.storetotalsettmentnum = totalsettmentnumfromcart
+			// console.log(state.storetotalsettmentnum,'vue')
+			localStorage.setItem('totalsettmentnumfromvuex',window.JSON.stringify(state.storetotalsettmentnum))
+		},
+		updatetotalsettmentamount(state,totalsettmentamountfromcart){
+			state.storetotalsettmentamount = totalsettmentamountfromcart
+			// console.log(state.storetotalsettmentnum,'vue')
+			localStorage.setItem('totalsettmentamountfromvuex',window.JSON.stringify(state.storetotalsettmentamount))
 		}
 	},
 	getters:{}

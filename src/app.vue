@@ -19,6 +19,8 @@
 		data(){
 			return {
 				
+				isRouterAlive:true
+				
 			}
 		},
 		methods: {
@@ -26,6 +28,11 @@
 				let scrolltop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
 				this.$store.commit('updatescrolltop',scrolltop);
 			},
+		},
+		provide(){
+			return {
+				reload:this.reload
+			}
 		},
 		components: {
 			appfooter

@@ -17,7 +17,7 @@
 						<span class="current">
 							￥
 						</span>
-						<span class="amount">10000</span>
+						<span class="amount">{{totalsettmentamountfromvuex}}</span>
 					</div>
 					<div class="labelow">
 						<div class="totalamount">
@@ -27,7 +27,7 @@
 							<span class="current">
 								￥
 							</span>
-							<span class="tlbelowamount">10000</span>
+							<span class="tlbelowamount">{{totalsettmentamountfromvuex}}</span>
 						</div>
 						<div class="totalreduction">
 							<span class="trbelowtext">
@@ -42,8 +42,7 @@
 				</div>
 				<button class="settleclick">
 					<span class="text1">去结算</span>
-					<span>({{cartlistlengthfromoperationbar}}件)</span>
-					<!-- <span>{{parlastestcartlist}}</span> -->
+					<span>({{totalsettmentnumfromvuex}}件)</span>
 				</button>
 			</div>
 		</div>
@@ -67,17 +66,26 @@ export default {
 	},
 
 	created(){
-		this.cartlistlengthfromoperationbar = JSON.parse(localStorage.getItem('cartlistlength')||'[]');
 	},
 	computed: {
         footer_isLogin() {
             return this.$store.state.storeisLogin
         }, 
-        cartlistlengthfromvuex(){
-        	return this.$store.state.storecartlistlength
+        totalsettmentnumfromvuex:{
+        	get() {
+        		return this.$store.state.storetotalsettmentnum||JSON.parse(localStorage.getItem('totalsettmentnumfromvuex')||'[]')
+        	}
+        },  
+        totalsettmentamountfromvuex:{
+        	get() {
+        		return this.$store.state.storetotalsettmentamount||JSON.parse(localStorage.getItem('totalsettmentamountfromvuex')||'[]')
+        	}
         }
     },
-	props:['parlastestcartlist']
+	props:['parlastestcartlist'],
+	updated() {
+		// console.log(this.totalsettmentnumfromvuex,'settle')
+	}
 }
 </script>
 
