@@ -5,7 +5,16 @@
 		<actionsheet></actionsheet>
 		<cart :parcartlist ="cartlist" :parunitedselllist="unitedselllist" ></cart>
 		<settlementfooter :parlastestcartlist=lastestcartlist></settlementfooter>
-
+  <br><br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
 	</div>
 </template>
 

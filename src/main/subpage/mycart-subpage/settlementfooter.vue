@@ -78,7 +78,7 @@ export default {
         },  
         totalsettmentamountfromvuex:{
         	get() {
-        		return this.$store.state.storetotalsettmentamount||JSON.parse(localStorage.getItem('totalsettmentamountfromvuex')||'[]')
+        		return this.$store.state.storetotalsettmentamount||JSON.parse(localStorage.getItem('totalsettmentamountfromvuex')||'0')
         	}
         }
     },

@@ -10,11 +10,11 @@
 				<span class="mui-icon mui-icon-home-filled"></span>
 				<span>进店</span>
 			</div>
-			<div class="cart">
+			<router-link to='/mycart' class="cart" tag="div">
 				<span class="mui-icon-extra mui-icon-extra-cart"></span>
 				<span class="mui-badge mui-badge-danger">{{cartlistlength}}</span>
 				<span>购物车</span>
-			</div>
+			</router-link>
 			<div class="buttongroup">
 				<button class="addtocart" @click.self='addcart(parproname)'>加入购物车</button>
 				<button class="buynow">立即购买</button>

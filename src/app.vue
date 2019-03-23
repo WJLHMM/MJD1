@@ -19,7 +19,7 @@
 		data(){
 			return {
 				
-				isRouterAlive:true
+				// isRouterAlive:true
 				
 			}
 		},
@@ -29,11 +29,11 @@
 				this.$store.commit('updatescrolltop',scrolltop);
 			},
 		},
-		provide(){
-			return {
-				reload:this.reload
-			}
-		},
+		// provide(){
+		// 	return {
+		// 		reload:this.reload
+		// 	}
+		// },
 		components: {
 			appfooter
 		},
