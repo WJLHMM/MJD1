@@ -109,7 +109,8 @@
 </template>
 
 <script>
-import mui from '../../../lib/mui-master/dist/js/mui.min.js';
+//对于第三方js可以在webpack里面配置，这里隐去
+// import mui from '../../../lib/mui-master/dist/js/mui.min.js';
 export default {
 	// inject:['reload'],
 	data() {
@@ -218,7 +219,7 @@ export default {
 		// 获取被选中的件数
 		// 1.pickedlist中的存储值就是parcarlist中的item.producmodel，
 		// 改变数据的地方包括 numbox的+-button,总选和每个单选input checklist
-		// 由于mui numbox的bug 一下两个函数放弃使用，直接使用input change事件来监听数据，
+		// 由于mui numbox的bug 及在最大或最小值前一，button失效，但是input。value任有效，两个函数放弃使用，直接使用input change事件来监听数据，
 		gettotalsettmentnumplus(itemname,index,totalsettmentnum){
 			this.totalsettmentnum = totalsettmentnum
 			if(this.pickedlist.indexOf(itemname)!=-1){
@@ -282,7 +283,7 @@ export default {
 			this.$store.commit('updatecartlistlength',this.cartlistfromoperationbar.length)
 			this.$store.commit('updatecartlist',this.cartlist)
 
-			// history.go(0)
+			history.go(0)
 			// self.reload()
 			// location.reload()s
 
@@ -310,8 +311,8 @@ export default {
 	created() {
 		this.picked = JSON.parse(localStorage.getItem('picked'))||true
 		this.pickedlist = JSON.parse(localStorage.getItem('pickedlist'))||[]
-		this.totalsettmentnum = JSON.parse(localStorage.getItem('totalsettmentnum'))||[]
-		this.totalsettmentamount = JSON.parse(localStorage.getItem('totalsettmentamount'))||[]
+		this.totalsettmentnum = JSON.parse(localStorage.getItem('totalsettmentnum'))||0
+		this.totalsettmentamount = JSON.parse(localStorage.getItem('totalsettmentamount'))||0
 	},
 	updated() {
 		// 注意在v-for的情况下，初始化，以及dom的选择放在updated钩子函数中，

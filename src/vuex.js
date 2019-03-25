@@ -30,12 +30,10 @@ var store = new Vuex.Store({
 		},
 		updatetotalsettmentnum(state,totalsettmentnumfromcart){
 			state.storetotalsettmentnum = totalsettmentnumfromcart
-			// console.log(state.storetotalsettmentnum,'vue')
 			localStorage.setItem('totalsettmentnumfromvuex',window.JSON.stringify(state.storetotalsettmentnum))
 		},
 		updatetotalsettmentamount(state,totalsettmentamountfromcart){
 			state.storetotalsettmentamount = totalsettmentamountfromcart
-			// console.log(state.storetotalsettmentnum,'vue')
 			localStorage.setItem('totalsettmentamountfromvuex',window.JSON.stringify(state.storetotalsettmentamount))
 		}
 	},

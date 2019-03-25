@@ -8,7 +8,7 @@
 		 </router-link>
 	
 		<router-link to='/commoditynav'class="mui-tab-item" >	
-			<span class="mui-icon mui-icon-email"></span>
+			<span class="mui-icon mui-icon-list"></span>
 			<span class="mui-tab-label">分类</span>
 		</router-link>
 
@@ -44,7 +44,7 @@ export default {
         }, 
         cartlistlengthfromvuex:{
         	get(){
-    			return this.$store.state.storecartlistlength||JSON.parse(localStorage.getItem('cartlistlengthfromvuex')||'[]');
+    			return this.$store.state.storecartlistlength||JSON.parse(localStorage.getItem('cartlistlengthfromvuex'))||'0';
         	},
         	set() {
         		
@@ -87,7 +87,8 @@ export default {
 				position:relative;
 				.cart-badge {
 					position: absolute;
-					top:-5px;
+					top:-1px;
+					left: 45px;
 					background-color: rgba(255, 0, 0, 0.897);
 					font-size:10px;
 					color:#fff;

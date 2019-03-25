@@ -73,18 +73,17 @@ export default {
         }, 
         totalsettmentnumfromvuex:{
         	get() {
-        		return this.$store.state.storetotalsettmentnum||JSON.parse(localStorage.getItem('totalsettmentnumfromvuex')||'[]')
+        		return this.$store.state.storetotalsettmentnum||JSON.parse(localStorage.getItem('totalsettmentnumfromvuex'))||0
         	}
         },  
         totalsettmentamountfromvuex:{
         	get() {
-        		return this.$store.state.storetotalsettmentamount||JSON.parse(localStorage.getItem('totalsettmentamountfromvuex')||'0')
+        		return this.$store.state.storetotalsettmentamount||JSON.parse(localStorage.getItem('totalsettmentamountfromvuex'))||0
         	}
         }
     },
 	props:['parlastestcartlist'],
 	updated() {
-		// console.log(this.totalsettmentnumfromvuex,'settle')
 	}
 }
 </script>

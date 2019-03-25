@@ -14,12 +14,15 @@ module.exports = {
 			template:path.join(__dirname,'./src/index.html'),
 			filename:'index.html'//指定内存中生成页面的名称可以自己取名
 		}),//创建一个 在内存中生成HTML的插件
+		//配置mui js插件
 		new webpack.ProvidePlugin({
-         mui: "mui",
-         "window.mui": "mui"
+			// 将mui引用变为全局变量，可以在该插件中配置
+       		mui: "mui",
+        	"window.mui": "mui"
 	    }),
 	    // new webpack.DefinePlugin({
-	    //    'process.env': require('../config/dev.env')
+	    //    // 'process.env': require('../config/dev.env')
+	    //    'process.env': NODE_ENV: isDev ? '"development"' : '"production"'
 	    // }),
 
 	],
@@ -37,7 +40,8 @@ module.exports = {
 	resolve: {
 		alias:{//修改vue的导入方式，使用没有阉割版的VUE文件,import时直接引入vue即可
 			'vue$':'vue/dist/vue.js',
-			'mui': path.resolve(__dirname, './src/lib/mui-master/dist/js/mui.js')
+			//注意，不知何故mui.js有bug，故使用mui.min.js
+			'mui': path.resolve(__dirname, './src/lib/mui-master/dist/js/mui.min.js')
 		}
 	}
 }
