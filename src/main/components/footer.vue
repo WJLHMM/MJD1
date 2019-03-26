@@ -88,7 +88,7 @@ export default {
 				.cart-badge {
 					position: absolute;
 					top:-1px;
-					left: 45px;
+					left: 50%;
 					background-color: rgba(255, 0, 0, 0.897);
 					font-size:10px;
 					color:#fff;

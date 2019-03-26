@@ -1,5 +1,5 @@
 
-<!-- 本菜单为以中间为中心的菜单一移动 -->
+<!-- 本菜单为单向向上的菜单 -->
 <template>
 	<div class="totalmenu">
 		<ul class="itemswrapper" >
@@ -7,7 +7,7 @@
 				v-for="(item,index) in parcatalogyList" 
 				class="item"
 				:key="item.cid"
-				@click.native.self.stop.prevent="menushow(index)" 
+				@click.native="menushow(index)" 
 			>
 				{{item.name}}
 			</router-link>
@@ -22,13 +22,13 @@ export default {
 
 	data(){
 		return {
-			itemtopest:0,
-			menumove:null
+			itemtopest:0
+			
 		}
 	},
 	methods: {
 		menushow(i){
-			//确定ul的相对位置，本案是以屏幕中心基准top326（50+6*46）。
+			//确定ul的相对位置，本案是以header的下沿为基准。
 			//1.确定ul li的dom节点
 			let itemlist = document.getElementsByClassName('item')
 			let itemswrapper = document.getElementsByClassName('itemswrapper')
@@ -39,44 +39,23 @@ export default {
 				itemlist[i].style.backgroundColor='#f2f2f2'
 				itemlist[i].style.borderRight='#f2f2f2'
 				// 2.2确定此刻在基准位置item的索引号
-				if(itemlist[i].getBoundingClientRect().top==326){
+				if(itemlist[i].getBoundingClientRect().top==50){
 					this.itemtopest = i
 				}
 			}
-			console.log(this.itemtopest)
 			// 2.3对于选中item的节颜色，背景，左边框高亮
 			itemlist[i].style.color='red'
 			itemlist[i].style.backgroundColor='#fff'
 			itemlist[i].style.borderRight='#fff'
-			console.log(`translateY(${itemswrapper[0].getBoundingClientRect().top-50-(i-this.itemtopest)*46}px)`)
-			// 3.ul菜单的移动。 以中间为基准，如果该item在此之上，则向下移动，如果在此之下向上移动，每次变动的距离为，(i-itemtopest)*46,及，item之间间隔数量与item高之积
-			if(i<33&&i>6){//当ul向上移动大于最后一屏幕高度时候，保持菜单ul的移动
+			// console.log(`translateY(${itemswrapper[0].getBoundingClientRect().top-50-(i-this.itemtopest)*46}px)`)
+			// 3.ul菜单的移动。 以header吧下沿为基准，每次变动的距离为(i-itemtopest)*46,及，item之间间隔数量与item高之积
+			if(i<28){//当ul向上移动大于最后一屏幕高度时候，保持菜单ul的移动
 			// 3.1故绝对距离变为ul与下沿的差值itemswrapper[0].getBoundingClientRect().top-50 减去变动距离
-			 	clearTimeout(this.menumove)
-			    this.menumove= setTimeout(()=>{
-					itemswrapper[0].style.transform=`translateY(${itemswrapper[0].getBoundingClientRect().top-50-(i-this.itemtopest)*46}px)`
-					itemswrapper[0].style.transition="all 0.5s ease-out"
-					return true
-			    },50)
+				itemswrapper[0].style.transform=`translateY(${itemswrapper[0].getBoundingClientRect().top-50-(i-this.itemtopest)*46}px)`
+			}else {//当ul向上移动剩余最后一屏幕高度时候，停止菜单ul的移动
+				itemswrapper[0].style.transform=`translateY(-1242px)`
 			}
-			else if(i>=0&&i<=6){//当ul第一屏幕高度时候，停止菜单ul的移动1~6item
-				clearTimeout(this.menumove)
-				 this.menumove= setTimeout(()=>{
-					itemswrapper[0].style.transform="translateY(0px)"
-					itemswrapper[0].style.transition="all 0.5s ease-out"
-					return true
-				 },50)
-			}
-			else if(i>=33&&i<=38){//当ul向上移动剩余最后一屏幕高度时候，停止菜单ul的移动33~38
-				clearTimeout(this.menumove)
-				this.menumove= setTimeout(()=>{
-					itemswrapper[0].style.transform=`translateY(-1242px)`
-					itemswrapper[0].style.transition="all 0.5s ease-out"
-					return true
-				},50)
-			}
-			// itemswrapper[0].style.transition="all 0.5s ease-out"
-			// 快速点击会出现click累加。
+			itemswrapper[0].style.transition="all 0.5s ease"
 		}
 	},
 	props:['parcatalogyList'],

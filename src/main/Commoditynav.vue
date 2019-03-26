@@ -1,6 +1,8 @@
 =
 <template>
-	<div class="commoditynav" onmousewheel="return false;">
+	<div class="commoditynav" 
+		onmousewheel="return false;"
+	>
 		<search></search>
 		<totalmenu :parcatalogyList="catalogyList"></totalmenu>
 		<router-view 
