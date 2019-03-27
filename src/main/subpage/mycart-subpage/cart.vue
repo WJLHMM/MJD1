@@ -342,9 +342,18 @@ export default {
 		localStorage.setItem('totalsettmentnum',window.JSON.stringify(this.totalsettmentnum))
 		localStorage.setItem('totalsettmentamount',window.JSON.stringify(this.totalsettmentamount))
 
-		//注意当购物车被清空后，务必清除localstorage，否则数据混乱
+		//注意当购物车被清空后，务必清除相对应localstorage，否则数据混乱
 		if(this.parcartlist.length==0) {
-			localStorage.clear()
+			localStorage.removeItem('totalsettmentnumfromvuex')
+			localStorage.removeItem('totalsettmentnum')
+			localStorage.removeItem('totalsettmentamountfromvuex')
+			localStorage.removeItem('totalsettmentamount')
+			localStorage.removeItem('pickedlist')
+			localStorage.removeItem('picked')
+			localStorage.removeItem('number')
+			localStorage.removeItem('cartlistlengthfromvuex')
+			localStorage.removeItem('cartlistlength')
+			localStorage.removeItem('cartlist')
 		}
 
 	}

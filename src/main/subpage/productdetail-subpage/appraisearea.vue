@@ -3,42 +3,61 @@
 	<div class="appraisetitle">
 		<p class="left">
 			<span class="appraisename">评价</span>
-			<span class="goodappaise">好评 99%</span>
+			<span class="goodappaise">好评 {{parappraiseinfoitem.goodappraiseratio}}</span>
 		</p>
 		<p class="right">
-			<span class="totalappaise">共 126万+ 条</span>
+			<span class="totalappaise">共 {{parappraiseinfoitem.goodappraisenum}}万+ 条</span>
 			<span class="mui-icon mui-icon-arrowright"></span>
 		</p>
 	</div>
 	<ul class="appraiseareagrade">
-		<li class="goodappaise">好评（121万+）</li>
-		<li class="middleappaise">中评（3300+）</li>
-		<li class="badappaise">差评（3600+）</li>
-		<li class="group">有圈(4.4万+)</li>
+		<li class="goodappaise">好评（{{parappraiseinfoitem.goodappraisenum}}万+）</li>
+		<li class="middleappaise">中评（{{parappraiseinfoitem.neuappraisenum}}+）</li>
+		<li class="badappaise">差评（{{parappraiseinfoitem.badappraisenum}}+）</li>
+		<li class="group">有圈({{parappraiseinfoitem.momentsnum}}万+)</li>
 	</ul>
-	<div class="appraisearea">
+	<div class="appraisearea" v-for="item in parappraiseinfoitem.commentinfo">
 		<div class="userinfo">
 			<p class="username">
-				<span >小红同志的太阳山</span>
-				<span class="mui-icon mui-icon-star-filled"></span>
-				<span class="mui-icon mui-icon-star-filled"></span>
-				<span class="mui-icon mui-icon-star-filled"></span>
-				<span class="mui-icon mui-icon-star-filled"></span>
-				<span class="mui-icon mui-icon-star-filled"></span>
+				<span >{{item.nickname|usernameomit}}</span>
+				<span 
+					class="mui-icon mui-icon-star-filled" 
+					v-for="i in item.commentstars"
+					:data-index="i"
+
+				></span>
+				
 			</p>
-			<p class="appraisedate">2019-01-21</p>
+			<p class="appraisedate">{{item.commendate}}</p>
 		</div>
 		<div class="appraisecontent">
-			用了三个星期，来说说感受：首先是送货速度快，晚上下单，第二天就到了，京东自营就是快。第二个是包装，这个只能给三分了，看着很简陋，拿起来摇晃，只听到里面东西在响，这也太简陋了。再说说外观，之前已经买了一台荣耀play给儿子用，对这个刘海屏也有所了解，感觉那个刘海不怎么喜欢，全面屏总体外观比以前用的6X要好看多了，（老婆还在用另一台6X）但就是屏幕太长，大拇指够不到顶部，也不好抓，后面必须得粘一个指环扣，不然单手真的不好拿。再说说这个处理器和反应速度，真的是一分钱一分货，我不玩游戏，但是打开某些软件或文件总体来说就是卡，慢，半天还在转圈圈，在~空间里同时上传三个视频到说说，直接就不动了，关闭软件重新打开时那些视频只能重新再上传了，不能接续，这个处理器只能说凑合着吧，跟荣耀play的970还是有很大差距。再说说这个网络，感觉比之前我用的6❌还差，进到卫生间里就没有WiFi和移动网络了，而且也不能自动切换WiFi信号，我以前用的华为荣耀手机都没这种情况。再说说拍照，这个优点就是夜拍了，夜间用AI模式拍出来的照片很清晰，这个我很喜欢，缺点就是慢，要拿好久才能拍出来，而且我发现一个问题就是拍~
+			{{item.commentcontent}}
 		</div>
+	</div>
+	<div class="appraiseareaothers">
+		<button class="checkall">查看全部评价</button>
 	</div>
 </div>
 </template>
 
 <script>
-	
+import Vue from 'vue'
+Vue.filter('usernameomit',function(filtermsg){
+	//这里注意各种字符串API，有些事直接修改str,例如charAt()，而有些是返回一个截取的字符串，或数组，本案中采取后一种的api
+	return filtermsg.substr(0,1)+'***'+filtermsg.substr(-1,1)
+});	
 export default {
+	data() {
+		return {
+		}
+	},
+	props:['parappraiseinfoitem'],
+	methods: {
 
+	},
+	created(){
+		// console.log(this.parappraiseinfoitem)
+	}
 
 }
 </script>
@@ -46,7 +65,7 @@ export default {
 <style scoped lang="less">
 .appraiseareawrapper {
 	width:100%;
-	border-bottom:1px solid #e8e8ed;
+	
 	padding-bottom: 10px;
 	.appraisetitle {
 		width:100%;
@@ -94,6 +113,8 @@ export default {
 		align-items: center; 
 		justify-content: space-between;
 		padding:0 10px;
+		border-bottom:1px solid #e8e8ed;
+		margin-bottom:20px;   
 		.userinfo {
 			width:100%;
 			height:20px;
@@ -111,9 +132,9 @@ export default {
 				display: inline-block;
 				color:#999;
 				width: 40px; 
-				overflow: hidden;
-				white-space: nowrap;
-				text-overflow: ellipsis; 
+				// overflow: hidden;
+				// white-space: nowrap;
+				// text-overflow: ellipsis; 
 			};
 
 			.appraisedate {
@@ -125,7 +146,7 @@ export default {
 			width: 100%; 
 			height:45px;
 			line-height: 15px;
-			color:#999;
+			color:#000;
 			font-size: 14px;
 			display: -webkit-box;
 			overflow: hidden;
@@ -133,6 +154,18 @@ export default {
 			-webkit-line-clamp: 3;
 			-webkit-box-orient: vertical;
 			text-overflow: -o-ellipsis-lastline; 
+		}
+	}
+	.appraiseareaothers{
+		margin-top: 40px;
+		width:100%;
+		position:relative;
+		.checkall {
+ 			position: absolute;
+            top: 50%;
+            left: 50%;
+            transform:translate(-50%, -50%);
+            border-radius:16px;
 		}
 	}
 

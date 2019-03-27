@@ -40,15 +40,11 @@ export default {
 		}
 	},
 	methods: {
-		changevalue(){
-			this.item = this.paritem
-		}
+		
 	},
 	components:{
 	},
 	created(){ 
-		// this.changevalue()
-		console.log(this.item)
 		this.item = this.paritem
 		if(this.$route.fullPath=='/mycart') {
 			this.title = '购物车',

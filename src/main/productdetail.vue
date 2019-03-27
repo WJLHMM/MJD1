@@ -6,7 +6,7 @@
 		<productshow :parproductitem=productitem></productshow>	
 		<seller :parselleritem=selleritem></seller>
 		<divgap></divgap>
-		<appraisearea></appraisearea>
+		<appraisearea :parappraiseinfoitem = appraiseinfoitem></appraisearea>
 		<operationbar :parproname=proname></operationbar>
  		<br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br>
 
@@ -33,6 +33,8 @@ export default {
 			selleritem:{},
 			productdetail:[],
 			productitem:{},
+			appraiseinfo:[],
+			appraiseinfoitem:{},
 			item:'',
 			proname:''
 
@@ -87,6 +89,22 @@ export default {
 			console.log(e)
 		})
 		},
+		getappaiseinfo() {
+			this.$http.get('appraiseinfo.json').then(res=> {
+				if(res.body.success) {
+					this.appraiseinfo = [...res.body.data]
+					this.appraiseinfo.some((item)=>{
+						if(this.proname===item.proname){
+							this.appraiseinfoitem = item
+							// console.log(this.appraiseinfoitem)
+						}
+					})
+				}
+			}),
+			(e)=>{
+				console.log(e)
+			}
+		}
 	},
 	components: {
 		appheader,
@@ -102,9 +120,9 @@ export default {
 		this.proname = this.$route.query.proname
 		this.getproductdetaillist()
 		this.getsellerlist()
+		this.getappaiseinfo()
 	},
 	mounted(){
-		console.log(this.$route.fullPath)
 	},
 	updated(){
 

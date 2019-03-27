@@ -17,7 +17,7 @@
 			<span class="mui-tab-label cart-text">购物车</span>
 		</router-link>
 
-		<router-link :to="footer_isLogin?'/login':'/myinfo'"class="mui-tab-item" >
+		<router-link :to="!footer_isLogin?'/login':'/myinfo'"class="mui-tab-item" >
 			<span class="mui-icon mui-icon-contact"></span>
 			<span class="mui-tab-label">我的</span>
 		</router-link>
@@ -36,11 +36,15 @@ export default {
 		
 	},
 	created(){
-		
+
 	},
     computed: {
-        footer_isLogin() {
-            return this.$store.state.storeisLogin
+        footer_isLogin:{
+        	get(){
+        		// console.log(this.$store.state.storeisLogin||JSON.parse(localStorage.getItem('isLogin')),'footer')
+            	return this.$store.state.storeisLogin||JSON.parse(localStorage.getItem('isLogin'));
+        	},
+        	set(){}
         }, 
         cartlistlengthfromvuex:{
         	get(){

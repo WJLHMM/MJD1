@@ -18,8 +18,10 @@ var store = new Vuex.Store({
 		updatescrolltop(state,scrollTopfromapp){
 			state.storescrollTop = scrollTopfromapp
 		},
-		updateisLogin(state,isLoginfromlogin){
-			state.storeisLogin = isLoginfromlogin
+		updateisLogin(state,isLoginfromloginormyifo){
+			state.storeisLogin = isLoginfromloginormyifo
+			// console.log(state.storeisLogin,'vuex')
+			localStorage.setItem('isLogin',window.JSON.stringify(state.storeisLogin))
 		},
 		updatecartlist(state,carlistfromoperationbar){
 			state.storecartlist.concat(carlistfromoperationbar)

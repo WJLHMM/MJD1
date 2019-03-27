@@ -5,7 +5,7 @@
 		<div class="inputfidld">
 			<form class="mui-input-group">
 				<div class="mui-input-row">
-					<input type="text" placeholder="用户名/邮箱/已验证手机">
+					<input type="text" class="mui-input-clear" placeholder="用户名/邮箱/已验证手机">
 				</div>
 				<div class="mui-input-row mui-password">
 					<input type="text" class="mui-input-clear mui-input-password" placeholder="请输入密码">
@@ -51,22 +51,42 @@ export default {
 
 	data(){
 		return {
-			isLogin:false
+			isLogin:false,
+			check:null
 		}
 	},
 	methods: {
 		login(){
-			this.isLogin = true;
-			this.$store.commit('updateisLogin',this.isLogin);
-			if(this.isLogin) {
-				this.$router.push({path:'/myinfo'});
+			let that = this
+			// this.isLogin = true;
+			// this.$store.commit('updateisLogin',this.isLogin);
+			// localStorage.setItem('isLogin',window.JSON.stringify(this.isLogin))
+			// if(this.isLogin) {
+			// 	this.$router.push({path:'/myinfo'});
+			// }
+			// mui.alert('确认初始化OK')
+		
+			//若当前input为空，则alert提醒 
+			if(!this.value || this.value.trim() == "") {
+			    var label = this.previousElementSibling;
+			    mui.alert("用户名和密码" + "不允许为空");
+			    // that.check = false;
+			    return false;
 			}
+			 //校验通过，继续执行业务逻辑 
+			// if(check){
+			//     mui.alert('验证通过!')
+			// }
 		}
 	},
 	components: {
 		appheader
 	},
 	created(){
+		
+	},
+	mounted(){
+		mui('.mui-input-row input').input(); 
 		
 	}
 }

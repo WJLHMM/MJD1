@@ -5,9 +5,10 @@
 		<div class="myinfolist">
 			<div class="myinfocardwrap">
 				<div class="myinfocard">
-					<div class="myaccountman">
+					<div class="myaccountman" @click="showquit">
 						<span class="mui-icon mui-icon-gear-filled"></span>
 						<span>账号管理</span>
+						<p class="quit" @click="quitlogin" tag="p" v-show="isQuitshow">退出</p>
 					</div>
 					<div class="myinfodetail">
 						<div class="myavater">
@@ -119,19 +120,31 @@ import appheader from './components/header.vue';
 export default {
 	data(){
 		return {
-		
+			isQuitshow:false,
+			isLogininmyinfo:true
 			
 		}
 	},
 	methods: {
-		
+		showquit(){
+			this.isQuitshow = true
+		},
+		quitlogin() {
+			this.isLoginininmyinfo = false
+			this.isQuitshow = true
+			this.$store.commit('updateisLogin',this.isLoginininmyinfo)
+			// 注意这里路由跳转放在方法里面，如果直接使用router-link，islogin的值无法传给vuex
+			this.$router.push('/login')
+			localStorage.setItem('isLogin',window.JSON.stringify(this.isLoginininmyinfo))
+		}
 	},
 	components: {
 		appheader
-		},
+	},
 	created(){
-		
+		this.isLoginininmyinfo =JSON.parse(localStorage.getItem('isLogin'))
 	}
+	
 }
 </script>
 
@@ -165,9 +178,19 @@ export default {
 						width: 100%;
 						height: 20px;
 						padding-right: 14px;
+						position: relative;
+						cursor: pointer;
 						span {
 							font-size: 14px;
-						}       
+						}  
+						.quit{
+							top: 20px;
+							right:50px;
+							color: #fff;
+							font-size: 14px;
+							cursor: pointer;
+							position: absolute;
+						}     
 					}
 					.myinfodetail {
 						width: 100%;

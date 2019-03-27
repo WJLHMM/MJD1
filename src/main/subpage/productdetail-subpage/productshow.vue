@@ -88,7 +88,7 @@
 					<span class="goodstitle"></span>
 					<p class="goodsstatus">
 						<span class="status">现货</span>
-						<span>23:00前下单,预计<b>明天(03月14日)</b>送达</span>
+						<span>23:00前下单,预计<b>明天({{tomorrowdate|tomorrowdateform}})</b>送达</span>
 					</p>
 					<button type=""></button>
 				</div>
@@ -107,14 +107,28 @@
 </template>
 
 <script>
-
-
+import Vue from "vue"
+Vue.filter('tomorrowdateform',function(date){
+		let MonthNum = date.getMonth()+1
+		let DayNum = date.getDate()
+		if(MonthNum<10) {
+			MonthNum = '0' + MonthNum
+		}
+		if(DayNum<10) {
+			DayNum = '0' + DayNum
+		}
+		// 奇怪下面的表达show typeError: date.getDate(...) is not a function，改成正常的if else没有问题
+		// (MonthNum<10)&&(MonthNum = '0' + MonthNum)
+		// (DayNum<10)&&(DayNum = '0' + DayNum)
+		return `${MonthNum}月${DayNum}日`
+		// return date.toLocaleDateString() //如果需要简单直接使用内置Api
+});	
 
 export default {
-
 	data(){
 		return {
-			
+			// tomorrowdate:new Date().setDate(new Date().getDate()+1)
+			tomorrowdate:new Date()
 		}
 	},
 	methods: {
@@ -125,6 +139,8 @@ export default {
 
 	},
 	created(){
+		//确定明天的事件数据
+		this.tomorrowdatedd = this.tomorrowdate.setDate(this.tomorrowdate.getDate()+1)
 	},
 	props:['parproductitem']
 }
