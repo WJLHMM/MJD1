@@ -101,7 +101,6 @@ export default {
 		margin-top: 50px;
 		display: flex;
 		justify-content: space-between;
-		overflow: hidden;
 	}
 	
 </style>

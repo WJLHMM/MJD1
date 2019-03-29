@@ -69,7 +69,7 @@
 
 html, body {
 	border:0;
-	touch-action: manipulation; 
+	/* touch-action: manipulation;  */
 	.container {
 		display:flex;
 		/* height: 100%; */

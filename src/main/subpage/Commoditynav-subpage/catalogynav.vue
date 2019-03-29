@@ -1,5 +1,5 @@
 <template>
-	<div class="catalogynav">
+	<div class="catalogycontainer">
 		<div class="catalogynavheader">
 			<span>{{parcatalogynavheader}}</span>
 		</div>
@@ -33,44 +33,60 @@ export default {
 	},
 	
 	props:['parcatalogyListdetail','parcatalogynavheader'],
-	created(){
-
+	updated(){
+		// let catalogynav = document.getElementsByClassName('catalogynav')
+		// console.log(catalogynav[0])
+  //   	// catalogynav[0].style.overflow = "hidden"
+  //   	// document.body.parentNode.style.overflow = "hidden"
+  //   	catalogynav[0].addEventListener("touch", function(e){
+		//     e.preventDefault()
+		//    		console.log("scroll",'catalogynav[0]')
+		   		
+		   
+		// }, false);
 	}
 
 }
 </script>
 
 <style lang="less" soped>
-	.catalogynav {
-		width: 550px;
-		// border:1px solid red;
-		
+	.catalogycontainer {
+		width: 78%;
+		//对于固定定位，实际宽度是按照全屏考虑比例
+		max-width:550px;
+		font-size: 14px;
+		position:fixed;
+		display:table;
 		.catalogynavheader {
-			width:100%;
 			height:46px;
-			max-width: 550px;
+			width: 100%;
 			line-height:46px;
 		  	background-color: #fff;
-			border:1px solid #f2f2f2;
-			position:fixed;
-			top:50px;
+			border-right:1px solid #f2f2f2;
+			border-bottom:1px solid #f2f2f2;
+			border-top:1px solid #f2f2f2;
+			//为防止bug 需要在fixed下面来一个绝对定位，脱离fixed文档
+			position:absolute;
+			left:86px;
 			span {
-				position: absolute;
-				left:0;
-				width: 100%;
+				width: 550px;
 				padding-left:10px;
 			}
 		}
 		.catalogynavdeteils {
+			width: 100%;
 			padding-left:10px;
 			padding-top:10px;
 			margin-top: 46px;
+			position:absolute;
+			left:86px;
 			.catalogynavitemwrap {
-				width: 100%;
+				width:100%;;
 				display: flex;
 				flex-wrap: wrap;
+				position:relative;
 				.catalogyitem {
-					width: 33.3%;
+					width:33%;
 					height:107px;
 					display: flex;
 					flex-direction: column;

@@ -66,11 +66,12 @@
     height:50px;
     z-index:10;
     top: 0;
+    background: #fff;
     .searchcontainer{
         position:absolute;
         width: 100%;
         height:50px;
-        max-width: 636px;
+        max-width: 638px;
         left:0;
         display:flex;
         justify-content: space-between;

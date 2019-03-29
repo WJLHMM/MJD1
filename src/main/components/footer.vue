@@ -74,7 +74,7 @@ export default {
 	z-index: 100;
 	.mui-bar-tab {
 		display:flex;
-		max-width: 636px;
+		max-width: 638px;
 		justify-content: space-around;
 		position: absolute;
 		left:0;

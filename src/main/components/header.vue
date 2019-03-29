@@ -84,7 +84,7 @@ export default {
 		position: fixed;
 		top: 0;
 		width: 100%;
-		max-width: 636px;
+		max-width: 638px;
 		background-color: #fff;
 		z-index: 10;
 	}
