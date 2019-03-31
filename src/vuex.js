@@ -12,7 +12,8 @@ var store = new Vuex.Store({
 		storecartlist:[],
 		storecartlistlength:0,
 		storetotalsettmentnum:0,
-		storetotalsettmentamount:0
+		storetotalsettmentamount:0,
+		storeuserlogined:{}
 	},
 	mutations: {
 		updatescrolltop(state,scrollTopfromapp){
@@ -37,6 +38,9 @@ var store = new Vuex.Store({
 		updatetotalsettmentamount(state,totalsettmentamountfromcart){
 			state.storetotalsettmentamount = totalsettmentamountfromcart
 			localStorage.setItem('totalsettmentamountfromvuex',window.JSON.stringify(state.storetotalsettmentamount))
+		},
+		updateuserlogined(state,updateuserloginedfromlogin){
+			state.storeuserlogined = updateuserloginedfromlogin
 		}
 	},
 	getters:{}

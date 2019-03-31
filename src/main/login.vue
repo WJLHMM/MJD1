@@ -5,10 +5,22 @@
 		<div class="inputfidld">
 			<form class="mui-input-group">
 				<div class="mui-input-row">
-					<input type="text" class="mui-input-clear" placeholder="用户名/邮箱/已验证手机">
+					<input 
+						ref="username" 
+						type="text" 
+						class="mui-input-clear" 
+						placeholder="用户名/邮箱/已验证手机"
+						@change="usernamecheck"
+					>
 				</div>
 				<div class="mui-input-row mui-password">
-					<input type="text" class="mui-input-clear mui-input-password" placeholder="请输入密码">
+					<input 
+						ref="password" 
+						type="text" 
+						class="mui-input-clear mui-input-password"
+						placeholder="请输入密码"
+						@change="passwordcheck"
+					>
 					<span class="mui-icon mui-icon-eye">|</span>
 					<button type="button" class="" onclick="return false;">忘记密码</button>
 				</div>
@@ -36,7 +48,7 @@
 			</div>
 			<div class="logpolice">
 				<span>登录即代表您已同意</span>
-				<span>京东隐私政策</span>
+				<span>隐私政策</span>
 			</div>
 		</div>
 
@@ -52,12 +64,65 @@ export default {
 	data(){
 		return {
 			isLogin:false,
-			check:null
+			check:null,
+			userlogininfo:[],
+			userlogined:{}
 		}
 	},
 	methods: {
+		usernamecheck(){
+			// 用户名正则，首字符必须为字母，6到12位（字母，数字，下划线，减号）
+			let Reg = /^[a-zA-Z]{1}[a-zA-Z0-9_-]{5,12}$/;
+			if(!Reg.test(this.$refs.username.value)){
+				mui.alert('您的账号不符合注册规则')
+			}
+		},
+		passwordcheck(){
+			// 4到16位（数字、字母、下划线、减号!#@）
+			let Reg = /^[a-zA-Z0-9_!#@]{5,11}$/
+			if(!Reg.test(this.$refs.password.value)){
+				mui.alert('您的密码不符合注册规则')
+			}
+		},
 		login(){
-			let that = this
+			let username = this.$refs.username.value
+			let password = this.$refs.password.value
+			
+
+			this.$http.post('userlogininfl.json',{},{emulateJSON:true}).then((response)=>{
+				// console.log(response.data.data.logininfo)
+				this.userlogininfo = [...response.data.data.logininfo]
+				this.userlogininfo.some((item)=> {
+					if(username===item.loginname) {
+						this.userlogined.usernamelogined = item.loginname
+					}
+					if(password===item.password) {
+						this.userlogined.passwordlogined = item.password
+					}
+					if(username===item.loginname&&password===item.password) {
+						this.isLogin = true;
+						this.$store.commit('updateisLogin',this.isLogin);
+						this.$store.commit('updateuserlogined',this.userlogined)
+						localStorage.setItem('isLogin',window.JSON.stringify(this.isLogin))
+						localStorage.setItem('userlogined',window.JSON.stringify(this.userlogined))
+						mui.toast(
+							'登陆成功',
+							{ duration:'100', type:'div' })
+						this.$router.push({path:'/myinfo'});
+
+					}
+				})
+				// console.log(this.userlogined)
+				if(!this.userlogined.usernamelogined){
+					mui.alert('您的账号不正确')
+				}
+				if(!this.userlogined.passwordlogined){
+					mui.alert('您的密码不正确')
+				}
+			},(response)=>{
+				console.log(response)
+			})
+			// let that = this
 			// this.isLogin = true;
 			// this.$store.commit('updateisLogin',this.isLogin);
 			// localStorage.setItem('isLogin',window.JSON.stringify(this.isLogin))
@@ -67,12 +132,12 @@ export default {
 			// mui.alert('确认初始化OK')
 		
 			//若当前input为空，则alert提醒 
-			if(!this.value || this.value.trim() == "") {
-			    var label = this.previousElementSibling;
-			    mui.alert("用户名和密码" + "不允许为空");
-			    // that.check = false;
-			    return false;
-			}
+			// if(!this.value || this.value.trim() == "") {
+			//     var label = this.previousElementSibling;
+			//     mui.alert("用户名和密码" + "不允许为空");
+			//     // that.check = false;
+			//     return false;
+			// }
 			 //校验通过，继续执行业务逻辑 
 			// if(check){
 			//     mui.alert('验证通过!')
@@ -95,6 +160,7 @@ export default {
 <style scoped lang='less'>
 .login {
 	width: 100%;
+	overflow: hidden;
 	.inputfidld {
 		width:100%;
 		margin-top: 50px;

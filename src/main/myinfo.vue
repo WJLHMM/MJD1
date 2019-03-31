@@ -18,16 +18,16 @@
 						</div>
 						<div class="mydetails">
 							<div class="mynickname">
-								<span>红高粱</span>
-								<span>金牌</span>
+								<span>{{myinfo.nikename}}</span>
+								<span>{{myinfo.grade}}</span>
 							</div>
 							<div class="mylogname">
 								<span>用户名:</span>
-								<span>abcde</span>
+								<span>{{userloginedinmyinfo.usernamelogined}}</span>
 							</div>
 							<div class="mycreditinfo">
-								<button type="button">积分值12345</button>
-								<button type="button">信用值6784</button>
+								<button type="button">积分值{{myinfo.creditpoint}}</button>
+								<button type="button">信用值{{myinfo.jdmoneypoint}}</button>
 							</div>
 						</div>
 					</div>
@@ -121,8 +121,9 @@ export default {
 	data(){
 		return {
 			isQuitshow:false,
-			isLogininmyinfo:true
-			
+			isLogininmyinfo:true,
+			userloginedinmyinfo:{},
+			myinfo:{}
 		}
 	},
 	methods: {
@@ -136,6 +137,16 @@ export default {
 			// 注意这里路由跳转放在方法里面，如果直接使用router-link，islogin的值无法传给vuex
 			this.$router.push('/login')
 			localStorage.setItem('isLogin',window.JSON.stringify(this.isLoginininmyinfo))
+		},
+		getmyinfo(){
+			this.$http.get('userinfo.json').then(res=>{
+				// console.log(res.body.data.logininfo)
+				res.body.data.logininfo.some((item)=>{
+					if(item.loginname===this.userloginedinmyinfo.usernamelogined){
+						this.myinfo = item.userinfo
+					}
+				}) 
+			})
 		}
 	},
 	components: {
@@ -143,7 +154,14 @@ export default {
 	},
 	created(){
 		this.isLoginininmyinfo =JSON.parse(localStorage.getItem('isLogin'))
+		this.userloginedinmyinfo = JSON.parse(localStorage.getItem('userlogined'))
+		this.getmyinfo()
 	}
+	// computed:{
+	// 	userloginedinmyinfo() {
+	//         return this.$store.state.storeuserlogined||JSON.parse(localStorage.getItem('userlogined'))
+	//     },
+	// }
 	
 }
 </script>
@@ -226,7 +244,7 @@ export default {
 							button {
 								height: 16px;
 								font-size: 12px;
-								padding: 0;
+								padding: 0 6px;
 								margin: 0;
 								line-height: 16px;
 								color: #fff;
