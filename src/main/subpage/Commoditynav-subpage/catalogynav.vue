@@ -34,16 +34,7 @@ export default {
 	
 	props:['parcatalogyListdetail','parcatalogynavheader'],
 	updated(){
-		// let catalogynav = document.getElementsByClassName('catalogynav')
-		// console.log(catalogynav[0])
-  //   	// catalogynav[0].style.overflow = "hidden"
-  //   	// document.body.parentNode.style.overflow = "hidden"
-  //   	catalogynav[0].addEventListener("touch", function(e){
-		//     e.preventDefault()
-		//    		console.log("scroll",'catalogynav[0]')
-		   		
-		   
-		// }, false);
+
 	}
 
 }

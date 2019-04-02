@@ -9,7 +9,7 @@ module.exports = {
 		filename:'bundle.js'//这是指定 输出文件的名称
 	},
 	plugins:[//配置插件的节点
-		new webpack.HotModuleReplacementPlugin(),  //new 一个hot模块的实例对象这样hot配置就好了这种不推荐
+		// new webpack.HotModuleReplacementPlugin(),  //new 一个hot模块的实例对象这样hot配置就好了这种不推荐
 		new htmlWebpackPlugin({
 			template:path.join(__dirname,'./src/index.html'),
 			filename:'index.html'//指定内存中生成页面的名称可以自己取名

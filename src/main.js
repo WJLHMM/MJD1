@@ -1,9 +1,15 @@
 //入口文件
+import 'babel-polyfill'//添加babel-polyfill使得IE高版本可以显示
+
 import Vue from 'vue'
 
 import VueResource from 'vue-resource'
 Vue.use(VueResource)
-Vue.http.options.root = '/mock-data/Api';
+Vue.http.options.root = 'mock-data/Api';
+Vue.http.options.emulateJSON = true;
+// Vue.http.options.headers = {
+//   'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
+// }
 
 import  router from './router.js'
 import  store from './vuex.js'

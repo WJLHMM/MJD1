@@ -22,17 +22,17 @@
 						@change="passwordcheck"
 					>
 					<span class="mui-icon mui-icon-eye">|</span>
-					<button type="button" class="" onclick="return false;">忘记密码</button>
+					<button type="button" class="">忘记密码</button>
 				</div>
 				<div class="mui-button-row">
 					<button type="button" class="mui-btn  mui-btn-danger" @click="login">登录</button>
-					<button type="button" class="mui-btn mui-btn-default" onclick="return false;">一键登录</button>
+					<button type="button" class="mui-btn mui-btn-default" >一键登录</button>
 				</div>
 			</form>
 		</div>
 		<div class="otherway">
-			<button type="button" class="mui-btn mui-btn-default" onclick="return false;">短信验证登录</button>
-			<button type="button" class="mui-btn mui-btn-default" onclick="return false;">手机快速注册</button>
+			<button type="button" class="mui-btn mui-btn-default" >短信验证登录</button>
+			<button type="button" class="mui-btn mui-btn-default" >手机快速注册</button>
 		</div>
 		<div class="morelog">
   			<h6>其它登录方式</h6>
@@ -58,13 +58,10 @@
 <script>
 import appheader from './components/header.vue'
 
-
 export default {
-
 	data(){
 		return {
 			isLogin:false,
-			check:null,
 			userlogininfo:[],
 			userlogined:{}
 		}
@@ -85,12 +82,13 @@ export default {
 			}
 		},
 		login(){
+
 			let username = this.$refs.username.value
 			let password = this.$refs.password.value
-			
+			// console.log('hello')
 
-			this.$http.post('userlogininfl.json',{},{emulateJSON:true}).then((response)=>{
-				// console.log(response.data.data.logininfo)
+			this.$http.post('userlogininfl.json',{},{}).then((response)=>{
+				console.log(response.data.data.logininfo)
 				this.userlogininfo = [...response.data.data.logininfo]
 				this.userlogininfo.some((item)=> {
 					if(username===item.loginname) {
@@ -122,26 +120,7 @@ export default {
 			},(response)=>{
 				console.log(response)
 			})
-			// let that = this
-			// this.isLogin = true;
-			// this.$store.commit('updateisLogin',this.isLogin);
-			// localStorage.setItem('isLogin',window.JSON.stringify(this.isLogin))
-			// if(this.isLogin) {
-			// 	this.$router.push({path:'/myinfo'});
-			// }
-			// mui.alert('确认初始化OK')
 		
-			//若当前input为空，则alert提醒 
-			// if(!this.value || this.value.trim() == "") {
-			//     var label = this.previousElementSibling;
-			//     mui.alert("用户名和密码" + "不允许为空");
-			//     // that.check = false;
-			//     return false;
-			// }
-			 //校验通过，继续执行业务逻辑 
-			// if(check){
-			//     mui.alert('验证通过!')
-			// }
 		}
 	},
 	components: {
@@ -160,6 +139,7 @@ export default {
 <style scoped lang='less'>
 .login {
 	width: 100%;
+	display: table;
 	overflow: hidden;
 	.inputfidld {
 		width:100%;
@@ -232,7 +212,7 @@ export default {
 		h6 {
 		display: block;     
 		position: relative; 
-		left: 35%; 
+		left: 40%; 
 		width: 100%;
 		}
 		h6:before,h6:after {
@@ -244,7 +224,7 @@ export default {
 			height: 1px;
 		}
 		h6:before{
-			left: -30%;        
+			left: -40%;        
 		}
 		h6:after {
 			right: 45%;
